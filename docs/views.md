@@ -6,21 +6,21 @@
 ## New Session
 ![new-session]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## Map / Index Page
+![map-index]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## Reservations Index Page
+![reservations-index]
 
-## NoteBookForm
-![notebook-form]
+## Create / Modify Reservation
+![create-modify-reservation]
 
 ## Component Heirarchy
 ![component-heirarchy]
 
 [new-user]: ./wireframes/new_user.png
 [new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
+[map-index]: ./wireframes/index.png
+[reservations-index]: ./wireframes/reservations_index.png
+[create-modify-reservation]: ./wireframes/create_modify_reservation.png
 [component-heirarchy]: ./wireframes/component_heirarchy.png
