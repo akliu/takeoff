@@ -1,4 +1,4 @@
-# Phase 2: Flux Architecture and Reservations CRUD (2 days)
+# Phase 2: Flux Architecture and Reservations CRUD
 
 ## Rails
 ### Models
