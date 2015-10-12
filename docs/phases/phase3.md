@@ -1,39 +1,24 @@
-# Phase 3: Notebooks and Tags (2 days)
+# Phase 3: Map
 
 ## Rails
 ### Models
-* Notebook
-* Tag
-* Tagging
 
 ### Controllers
-* Api::NotebooksController (create, destroy, index, show, update)
+* Api::AirportsController (index)
 
 ### Views
-* notebooks/index.json.jbuilder
-* notebooks/show.json.jbuilder
-* tags/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* NotebooksIndex
-  - NotebookIndexItem
-* NotebookForm
-* SearchIndex
+* Map
 
 ### Stores
-* Notebook
 
 ### Actions
-* ApiActions.receiveAllNotebooks
-* ApiActions.receiveSingleNotebook
-* ApiActions.deleteNotebook
+* ApiActions.receiveAllAirports
 
 ### ApiUtil
-* ApiUtil.fetchAllNotebooks
-* ApiUtil.fetchSingleNotebook
-* ApiUtil.createNotebook
-* ApiUtil.editNotebook
-* ApiUtil.destroyNotebook
+* ApiUtil.fetchAllAirports
 
 ## Gems/Libraries
+* Google maps API

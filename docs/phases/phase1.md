@@ -1,20 +1,23 @@
-# Phase 1: User Authentication, Note Model and JSON API
+# Phase 1: User Authentication, Airports Model, Reservations Model and JSON API
 
 ## Rails
 ### Models
 * User
-* Note
+* Reservation
+* Airport
 
 ### Controllers
 * UsersController (create, new)
 * SessionsController (create, new, destroy)
-* Api::NotesController (create, destroy, index, show, update)
+* Api::ReservationsController (create, destroy, index, show, update)
+* Api::AirportsController (show)
 
 ### Views
 * users/new.html.erb
 * session/new.html.erb
-* notes/index.json.jbuilder
-* notes/show.json.jbuilder
+* reservations/index.json.jbuilder
+* reservations/show.json.jbuilder
+* airports/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)

@@ -41,7 +41,7 @@ Phase 2 is focused on setting up Flux, the React Router, and the React view
 structure for the main application. After the basic Flux architecture has been
 set up, Reservation and Airports stores will be implemented and a set of actions
 corresponding to the needed CRUD functionality created. Once this is done, I
-will create React views for the Map `Index`, reservation `Index' and reservation
+will create React views for the Map `Index`, reservation `Index` and reservation
 `Create/Modify`. At the end of Phase 2, reservations can be created, read,
 edited and destroyed in the browser. Reservations should save to the database
 and be accessible to the front end through ajax calls.

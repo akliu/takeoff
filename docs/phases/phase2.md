@@ -1,4 +1,4 @@
-# Phase 2: Flux Architecture and Note CRUD (2 days)
+# Phase 2: Flux Architecture and Reservations CRUD (2 days)
 
 ## Rails
 ### Models
@@ -9,25 +9,28 @@
 
 ## Flux
 ### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
+* NavBar
+  - NavBarItem
+* Reservation form
+* Reservation index
+  -ReservationItem
 
 ### Stores
-* Note
+* Reservation
+* Airport
 
 ### Actions
-* ApiActions.receiveAllNotes
-* ApiActions.receiveSingleNote
-* ApiActions.deleteNote
+* ApiActions.receiveAllReservations
+* ApiActions.receiveSingleReservation
+* ApiActions.deleteReservation
+* ApiActions.receiveSingleAirport
 
 ### ApiUtil
-* ApiUtil.fetchAllNotes
-* ApiUtil.fetchSingleNote
-* ApiUtil.createNote
-* ApiUtil.editNote
-* ApiUtil.destroyNote
+* ApiUtil.fetchAllReservations
+* ApiUtil.fetchSingleReservation
+* ApiUtil.createReservation
+* ApiUtil.editReservation
+* ApiUtil.destroyReservation
 
 ## Gems/Libraries
 * Flux Dispatcher
-* Twitter Bootstrap
