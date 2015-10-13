@@ -10,7 +10,11 @@
     var App = React.createClass({
       render: function(){
         return (
-          <div>React says Hi!</div>
+          <div>
+            <h1>Takeoff</h1>
+            <Navbar />
+            {this.props.children}
+          </div>
         );
       }
     });
