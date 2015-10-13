@@ -51,3 +51,5 @@ end
 
 gem 'annotate'
 gem 'bcrypt'
+gem 'react-rails', '1.3.0'
+gem 'flux-rails-assets'
