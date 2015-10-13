@@ -11,7 +11,6 @@
       render: function(){
         return (
           <div>
-            <h1>Takeoff</h1>
             <Navbar />
             {this.props.children}
           </div>
