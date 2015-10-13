@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background-image: url(http://www.evolutionjet.aero/assets/pict/background/body_17.jpg);
+}
