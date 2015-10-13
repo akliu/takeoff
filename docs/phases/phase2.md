@@ -1,36 +1,31 @@
-# Phase 2: Flux Architecture and Reservations CRUD
+# Phase 2: Airport Index and Map
 
 ## Rails
 ### Models
+* Airport
 
 ### Controllers
+* Api::AirportsController (show, index)
 
 ### Views
+* airports/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
+* Map
 * NavBar
   - NavBarItem
-* Reservation form
-* Reservation index
-  -ReservationItem
+
 
 ### Stores
-* Reservation
 * Airport
 
 ### Actions
-* ApiActions.receiveAllReservations
-* ApiActions.receiveSingleReservation
-* ApiActions.deleteReservation
+* ApiActions.receiveAllAirports
 * ApiActions.receiveSingleAirport
 
 ### ApiUtil
-* ApiUtil.fetchAllReservations
-* ApiUtil.fetchSingleReservation
-* ApiUtil.createReservation
-* ApiUtil.editReservation
-* ApiUtil.destroyReservation
+* ApiUtil.fetchAllAirports
 
 ## Gems/Libraries
 * Flux Dispatcher

@@ -15,6 +15,7 @@ and React.js. Takeoff allows users to:
 - [ ] Log in / Log out
 - [ ] View nearest airports and available jets for hire
 - [ ] Create, read, edit, and delete flight reservations
+- [ ] Add jets to be rented by the service
 
 ## Design Docs
 * [View Wireframes][view]
@@ -25,51 +26,67 @@ and React.js. Takeoff allows users to:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Airports Model, Reservations Model and JSON API (2.5 days)
+
+### Phase 1: User Authentication (1.5 days)
 
 In Phase 1, I will begin by implementing user signup and authentication (using
 BCrypt). There will be a basic landing page after signup that will contain the
-container for the application's root React component. Before building out the
-front end, I will begin by setting up a full JSON API for Users, Airports, and
-Reservations.
+container for the application's root React component.
 
 [Details][phase-one]
 
-### Phase 2: Flux Architecture and Reservations CRUD (2.5 days)
+### Phase 2: Airport Index and Map (2.5 days)
 
-Phase 2 is focused on setting up Flux, the React Router, and the React view
-structure for the main application. After the basic Flux architecture has been
-set up, Reservation and Airports stores will be implemented and a set of actions
-corresponding to the needed CRUD functionality created. Once this is done, I
-will create React views for the Map `Index`, reservation `Index` and reservation
-`Create/Modify`. At the end of Phase 2, reservations can be created, read,
-edited and destroyed in the browser. Reservations should save to the database
-and be accessible to the front end through ajax calls.
+In phase 2, I will setup the full JSON API for airports and seed my database
+with airports.  I will then create
+the react view logic using the google maps API.  At the end of this stage, users
+will be able to airports on the map and click on airport marks to go to the
+reservation creation page to be created in phase 3.  I will also begin
+implementing basic CSS for the map/index page.
 
 [Details][phase-two]
 
-### Phase 3: Map (2.5 days)
+### Phase 3:  Reservation creation (1.5 days)
 
-Phase 3 involves the integration of google maps into the map/index page that
-users are taken to upon sign in.  Users will be able to see the nearest airports
-marked on the map and can click these markers to go to the reservation
-create/modify page.  The form will default the origin to the airport the user
-clicked on.  Map will need to generate ajax calls to populate the airports store
-with airports in the map's view.
+In phase 3, I will setup the JSON API for new reservations and implement the
+react view logic for reservation creation.  I will seed my database with
+reservations, and I will also add basic CSS styling to
+the reservation creation form.  At the end of this stage, users should be able
+to navigate to the reservation creation form from the map, and then submit a
+reservation which is saved to the database.
 
 [Details][phase-three]
 
-### Phase 4: Styling and Seeding (2.5 days)
+### Phase 4:  Reservation updating and deletion (2 days)
 
-Phase 4 will focus on polishing my app's styling and database seeding.  In the
-previous stages, I will use CSS to make the app layout match my proposed
-wireframes.  In this stage, I will add additional CSS to fully polish the site.
-I will also seed the database with additional data to create a better demo
-experience.
+In phase 4, I will update the JSON reservation API to add support for modifying
+and deleting existing reservations.  I will then update the react views to
+allow users to view previously created reservations and modify them.  At the
+end of this stage, users should be able to view, modify, and delete their
+reservations and have this saved to the database.
+
+[Details][phase-four]
+
+### Phase 5: Jets (3 days)
+
+In phase 5, I will add a table to keep track of jets and link jets to owners.  
+I will create a full JSON API for jets to be utilized by my react views.  I will
+add a view for owners to register their jets and update the reservation creation
+form to allow users to select a jet from available jets at the origin airport. I
+will also add basic CSS styling to the the jet registration page and seed the
+database with jets.
+
+[Details][phase-five]
+
+### Phase 6: Styling and seeding (2 days)
+
+Phase 6 will focus on polishing my app's styling and seed data. I will add
+additional CSS to fully polish the site and add more seeding to the database
+to create a strong demo experience.
+
 
 ### Bonus Features (TBD)
-- [ ] Add Jets to the JSON API and allow users to select a specific jet
-- [ ] Add sign up form for jet owners to rent their jets
+- [ ] Add features to jets such as prices, ratings, reviews, photos, and comments
 - [ ] Improve pricing system
 
 
@@ -77,3 +94,4 @@ experience.
 [phase-two]: ./docs/phases/phase2.md
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
+[phase-five]: ./docs/phases/phase5.md

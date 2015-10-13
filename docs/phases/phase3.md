@@ -1,24 +1,28 @@
-# Phase 3: Map
+# Phase 3: Reservation Creation
 
 ## Rails
 ### Models
+* Reservation
 
 ### Controllers
-* Api::AirportsController (index)
+* Api::ReservationsController (create)
 
 ### Views
 
+
 ## Flux
 ### Views (React Components)
-* Map
+* Reservation form
+
 
 ### Stores
 
+
 ### Actions
-* ApiActions.receiveAllAirports
+
 
 ### ApiUtil
-* ApiUtil.fetchAllAirports
+* ApiUtil.createReservation
+
 
 ## Gems/Libraries
-* Google maps API
