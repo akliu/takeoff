@@ -15,6 +15,9 @@
 ## Create / Modify Reservation
 ![create-modify-reservation]
 
+## Jet Registration
+![jet-registration]
+
 ## Component Heirarchy
 ![component-heirarchy]
 
@@ -24,3 +27,4 @@
 [reservations-index]: ./wireframes/reservations_index.png
 [create-modify-reservation]: ./wireframes/create_modify_reservation.png
 [component-heirarchy]: ./wireframes/component_heirarchy.png
+[jet-registration]: ./wireframes/jet_registration.png
