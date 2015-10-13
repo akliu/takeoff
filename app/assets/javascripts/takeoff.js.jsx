@@ -20,7 +20,7 @@
 
     var routes = (
       <Route path="/" component={App}>
-
+        <IndexRoute component={Map}/>
       </Route>
     );
 
