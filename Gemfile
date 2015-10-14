@@ -54,4 +54,5 @@ gem 'bcrypt'
 gem 'react-rails', '1.3.0'
 gem 'flux-rails-assets'
 gem 'bootstrap-sass'
-gem "thin"
+gem 'newrelic_rpm'
+gem 'rails_12factor', '0.0.2'

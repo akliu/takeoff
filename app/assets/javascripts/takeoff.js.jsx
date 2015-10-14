@@ -12,6 +12,7 @@
         return (
           <div>
             <Navbar />
+            <Sidebar />
             {this.props.children}
           </div>
         );
