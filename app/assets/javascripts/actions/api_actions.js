@@ -4,5 +4,12 @@ ApiActions = {
       actionType: AirportConstants.AIRPORTS_RECEIVED,
       payload: airports
     });
+  },
+
+  receiveReservations: function(reservations) {
+    AppDispatcher.dispatch({
+      actionType: ReservationConstants.RESERVATIONS_RECEIVED,
+      payload: reservations
+    });
   }
 };

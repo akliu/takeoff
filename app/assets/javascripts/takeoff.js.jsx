@@ -22,10 +22,11 @@
     var routes = (
       <Route path="/" component={App}>
         <IndexRoute component={Map}/>
+        <Route path="reservations/index" component={Reservations}/>
       </Route>
     );
 
-  
+
     if(root) {
       React.render(<Router>{routes}</Router>, root);
     }

@@ -18,7 +18,8 @@
 @import "bootstrap";
 
 body {
-  background-image: url(http://www.evolutionjet.aero/assets/pict/background/body_17.jpg);
+  // background-image: url(http://www.evolutionjet.aero/assets/pict/background/body_17.jpg);
+  background-image: url(asset_path("takeoff_background_1.jpg"))
 }
 
 .map {

@@ -1,0 +1,3 @@
+ReservationConstants = {
+  RESERVATIONS_RECEIVED: "RESERVATIONS_RECEIVED"
+};
