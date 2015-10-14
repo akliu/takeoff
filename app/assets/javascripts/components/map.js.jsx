@@ -123,7 +123,7 @@
 
     render: function(){
       return (
-        <div className="map" ref="map"></div>
+        <div className="map" ref="map">Finding airports near you...</div>
       );
     }
   });
