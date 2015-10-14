@@ -19,5 +19,6 @@
 //= require react_router.min
 //= require flux
 //= require eventemitter
+//= require moment-with-locales.min.js
 //= require components
 //= require_tree .
