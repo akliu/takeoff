@@ -10,6 +10,7 @@ ApiUtil = {
   },
 
   fetchAirports: function(filterParams){
+
     $.ajax({
       url: "api/airports",
       method: "GET",
