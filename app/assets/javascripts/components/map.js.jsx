@@ -3,6 +3,13 @@
 (function(window) {
   'use strict';
 
+  function _getCoordsObj(latLng) {
+    return {
+      lat: latLng.lat(),
+      lng: latLng.lng()
+    };
+  }
+
   window.Map = React.createClass({
     getInitialState: function(){
         return({airports: AirportStore.all()});
@@ -14,6 +21,7 @@
 
 
       this.mapCenter(function(userLocation){
+        //default to SF if geolocation fails
         if(JSON.stringify(userLocation) === "{}"){
           userLocation = {lat: 37.7758, lng: -122.435};
         }
@@ -22,11 +30,15 @@
           zoom: 9
         };
         this.map = new google.maps.Map(map, mapOptions);
+        this.registerListeners();
         ApiUtil.fetchAirports();
       }.bind(this));
-      //default to SF if geolocation fails
+        FilterParamsStore.addChangeListener(this._filtersChanged);
         this.markers = [];
+    },
 
+    _filtersChanged: function(){
+      ApiUtil.fetchAirports(FilterParamsStore.params());
     },
 
     _updateAirports: function(){
@@ -63,10 +75,10 @@
         map: this.map,
         airportId: airport.id
       });
-      this.markers.push(airport);
+      this.markers.push(marker);
     },
 
-    _removeAirport: function(airport){
+    _removeAirport: function(marker){
       for(var i = 0; i < this.markers.length; i++){
         if (this.markers[i].airportId === marker.airportId){
           this.markers[i].setMap(null);
@@ -82,13 +94,30 @@
         function(pos) {
           location["lat"] = pos.coords.latitude;
           location["lng"] = pos.coords.longitude;
-          callback(location)
+          callback(location);
         },
         function(err) {
           console.log('error');
           callback(location);
         }
       );
+
+    },
+
+    registerListeners: function(){
+      var that = this;
+      google.maps.event.addListener(this.map, 'idle', function(){
+        var mapBounds = that.map.getBounds();
+        var northEast = _getCoordsObj(mapBounds.getNorthEast());
+        var southWest = _getCoordsObj(mapBounds.getSouthWest());
+        //actually issue the request
+
+        var bounds = {
+          northEast: northEast,
+          southWest: southWest
+        };
+        FilterActions.updateBounds(bounds);
+      });
 
     },
 

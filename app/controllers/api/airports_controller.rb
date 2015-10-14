@@ -1,5 +1,12 @@
 class Api::AirportsController < ApplicationController
   def index
-    @airports = Airport.all
+
+
+    if (params[:filterParams])
+      bounds = params[:filterParams][:bounds]
+      @airports = Airport.in_bounds(bounds)
+    else
+      @airports = Airport.all
+    end
   end
 end

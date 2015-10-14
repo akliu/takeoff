@@ -9,12 +9,13 @@ ApiUtil = {
     });
   },
 
-  fetchAirports: function(airports){
+  fetchAirports: function(filterParams){
+    
     $.ajax({
       url: "api/airports",
       method: "GET",
+      data: {filterParams},
       success: function(airports){
-        debugger
         ApiActions.receiveAirports(airports);
       }
     });
