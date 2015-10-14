@@ -1,7 +1,6 @@
 class Api::AirportsController < ApplicationController
   def index
 
-
     if (params[:filterParams])
       bounds = params[:filterParams][:bounds]
       @airports = Airport.in_bounds(bounds)

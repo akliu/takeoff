@@ -46,7 +46,7 @@
       this.setState({airports: AirportStore.all()});
       var toAdd = [];
 
-      this.state.airports.forEach(function(airport, idx){
+      this.state.airports.forEach(function(airport){
         var idx = -1;
         //check if bench is already on map as a marker
         for(var i = 0; i < toRemove.length; i++){
@@ -92,8 +92,8 @@
       var location = {};
       navigator.geolocation.getCurrentPosition(
         function(pos) {
-          location["lat"] = pos.coords.latitude;
-          location["lng"] = pos.coords.longitude;
+          location.lat = pos.coords.latitude;
+          location.lng = pos.coords.longitude;
           callback(location);
         },
         function(err) {
