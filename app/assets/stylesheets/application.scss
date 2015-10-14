@@ -31,10 +31,23 @@ body {
   position: relative;
 }
 
+.navbar {
+  background: rgba(255, 255, 255, 0.8);
+}
+
 .sidebar-nav {
   float: left;
+  // background: rgba(255, 255, 255, 0.67);
 }
 
 .sidebar-nav li {
   display: block;
+}
+
+.reservation-list {
+  margin: auto;
+  float: right;
+  margin-right: 200px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.6);
 }

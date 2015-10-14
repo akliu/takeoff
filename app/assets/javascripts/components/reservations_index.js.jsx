@@ -17,7 +17,7 @@
 
     render: function(){
       return (
-          <div>
+          <div className="reservation-list modal-content">
             <h2>Reservations</h2>
               {
                 this.state.reservations.map(function(reservation){

@@ -3,9 +3,30 @@
 
   window.ReservationItem = React.createClass({
     render: function(){
+      var titleDate = moment(this.props.reservation.departure_time).format('dddd') +
+          ", " + moment(this.props.reservation.departure_time).format('MMMM Do');
+
+      var itemDate = moment(this.props.reservation.departure_time).format('lll');
+
+      var originName = this.props.reservation.origin_name;
+      var originCode = this.props.reservation.origin_code;
+
+      var destinationName = this.props.reservation.destination_name;
+      var destinationCode = this.props.reservation.destination_code;
+
+      var aircraft = this.props.reservation.jet_id;
+
+
       return (
         <div className="reservation-index-item">
-          <h3>{moment(this.props.reservation.departure_time).format('MMMM Do')}</h3>
+          <h3>To {this.props.reservation.destination_name} on {titleDate}</h3>
+          <ul>
+            <li>From: {originName} ({originCode})</li>
+            <li>To: {destinationName} ({destinationCode})</li>
+            <li>Departure Time: {itemDate}</li>
+            <li>Aircraft: {aircraft}</li>
+            <li><a href='#'>Edit</a>    <a href='#'>Cancel</a></li>
+          </ul>
         </div>
       );
     }
