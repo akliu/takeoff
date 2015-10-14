@@ -7,5 +7,15 @@ ApiUtil = {
         window.location="/";
       }
     });
+  },
+
+  fetchAirports: function(airports){
+    $.ajax({
+      url: "api/airports",
+      method: "GET",
+      success: function(){
+        ApiActions.receiveAirports(airports);
+      }
+    });
   }
 };
