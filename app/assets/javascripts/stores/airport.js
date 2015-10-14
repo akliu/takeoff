@@ -23,7 +23,6 @@
 
     dispatcherID: AppDispatcher.register(function(action){
 
-        debugger
       switch(action.actionType){
         case AirportConstants.AIRPORTS_RECEIVED:
           loadAirports(action.payload);

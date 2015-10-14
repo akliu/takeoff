@@ -10,19 +10,23 @@
 
     componentDidMount: function(){
       AirportStore.addChangeListener(this._updateAirports);
-      ApiUtil.fetchAirports();
       var map = React.findDOMNode(this.refs.map);
-      var userLocation = this.mapCenter();
+
+
+      this.mapCenter(function(userLocation){
+        if(JSON.stringify(userLocation) === "{}"){
+          userLocation = {lat: 37.7758, lng: -122.435};
+        }
+        var mapOptions = {
+          center: userLocation,
+          zoom: 9
+        };
+        this.map = new google.maps.Map(map, mapOptions);
+        ApiUtil.fetchAirports();
+      }.bind(this));
       //default to SF if geolocation fails
-      if(JSON.stringify(userLocation) === "{}"){
-        userLocation = {lat: 37.7758, lng: -122.435};
-      }
-      var mapOptions = {
-        center: userLocation,
-        zoom: 8
-      };
-      this.map = new google.maps.Map(map, mapOptions);
-      this.markers = [];
+        this.markers = [];
+
     },
 
     _updateAirports: function(){
@@ -72,18 +76,20 @@
       }
     },
 
-    mapCenter: function() {
+    mapCenter: function(callback) {
       var location = {};
       navigator.geolocation.getCurrentPosition(
         function(pos) {
           location["lat"] = pos.coords.latitude;
           location["lng"] = pos.coords.longitude;
+          callback(location)
         },
         function(err) {
           console.log('error');
+          callback(location);
         }
       );
-      return location;
+
     },
 
     render: function(){
