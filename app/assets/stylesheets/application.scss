@@ -22,13 +22,18 @@ body {
 }
 
 .map {
-  width: 500px;
+  width: 800px;
   height: 500px;
   float: right;
-  margin-right: 200px;
+  margin-right: 50px;
+  margin-right: 150px;
   position: relative;
 }
 
 .sidebar-nav {
   float: left;
+}
+
+.sidebar-nav li {
+  display: block;
 }
