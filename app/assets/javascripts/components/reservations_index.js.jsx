@@ -16,9 +16,15 @@
     },
 
     render: function(){
-      debugger
       return (
-          <div>Reservations go here!</div>
+          <div>
+            <h2>Reservations</h2>
+              {
+                this.state.reservations.map(function(reservation){
+                  return <ReservationItem reservation={reservation} />;
+                })
+              }
+          </div>
       );
     }
   });
