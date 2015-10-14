@@ -21,9 +21,11 @@
       this.removeListener(CHANGE_EVENT, callback);
     },
 
-    dispatcherID: AppDispatcher.register(function(payload){
-      switch(payload.actionType){
-        case AirportStore.AIRPORTS_RECEIVED:
+    dispatcherID: AppDispatcher.register(function(action){
+
+        debugger
+      switch(action.actionType){
+        case AirportConstants.AIRPORTS_RECEIVED:
           loadAirports(action.payload);
           AirportStore.emit(CHANGE_EVENT);
           break;

@@ -13,7 +13,8 @@ ApiUtil = {
     $.ajax({
       url: "api/airports",
       method: "GET",
-      success: function(){
+      success: function(airports){
+        debugger
         ApiActions.receiveAirports(airports);
       }
     });

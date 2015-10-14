@@ -17,7 +17,6 @@
       if(JSON.stringify(userLocation) === "{}"){
         userLocation = {lat: 37.7758, lng: -122.435};
       }
-      debugger
       var mapOptions = {
         center: userLocation,
         zoom: 8
