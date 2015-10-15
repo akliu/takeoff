@@ -1,12 +1,15 @@
 (function(window) {
   'use strict';
 
+  var hours = [1,2,3,4,5,6,7,8,9,10,11,12];
+  var minutes = [15,30,45];
+
   window.NewReservation = React.createClass({
     mixins: [React.addons.LinkedStateMixin],
 
     getInitialState: function(){
       return {
-        origin: "",
+        origin: this.props.location.query.name,
         destination: "",
         date: "",
         hour: 0,
@@ -21,23 +24,18 @@
     },
 
     render: function(){
-      var hours = [1,2,3,4,5,6,7,8,9,10,11,12];
-      var minutes = [15,30,45];
+
       return (
         <div>
           <h3>New Reservation</h3>
           <form onSubmit={this.handleSubmit}>
-            <label for="origin">From: </label>
+            <label>From: </label>
             <select valueLink={this.linkState("origin")} id="origin">
               <option></option>
               {
                 AirportStore.all().map(function(airport){
-                  var selected = "";
-                  if (this.props.location.query.code === airport.code){
-                    selected = "selected";
-                  }
                   return (
-                    <option value={airport.name} selected={selected}>
+                    <option value={airport.name} key={airport.id}>
                       {airport.name} - {airport.code}
                     </option>
                   );
@@ -45,13 +43,13 @@
               }
             </select>
             <br/>
-            <label for="destination">To: </label>
+            <label>To: </label>
             <select valueLink={this.linkState("destination")} id="destination">
               <option></option>
               {
                 AirportStore.all().map(function(airport){
                   return (
-                    <option value={airport.name}>
+                    <option value={airport.name} key={airport.id} >
                       {airport.name} - {airport.code}
                     </option>
                   );
@@ -59,18 +57,16 @@
               }
             </select>
             <br/>
-            <label for="date">Date: </label>
+            <label>Date: </label>
             <input type="date" valueLink={this.linkState("date")} id="date"></input>
             <br/>
-            <label for="hour">Departure Time: </label>
-            <label for="minute"></label>
-            <label for="ampm"></label>
+            <label>Departure Time: </label>
               <select valueLink={this.linkState("hour")} id="hour">
                 <option></option>
                 {
                   hours.map(function(hour){
                     return (
-                      <option value={hour}>
+                      <option value={hour} key={hour}>
                         {hour}
                       </option>
                     );
@@ -83,13 +79,14 @@
                 {
                   minutes.map(function(minute){
                     return (
-                      <option value={minute}>
+                      <option value={minute} key={minute}>
                         {minute}
                       </option>
                     );
                   })
                 }
-              </select>
+              </select>&nbsp;
+              &nbsp;
               <select valueLink={this.linkState("ampm")} id="ampm">
                 <option value="am">am</option>
                 <option value="pm">pm</option>
