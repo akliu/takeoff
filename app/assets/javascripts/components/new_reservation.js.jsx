@@ -2,7 +2,21 @@
   'use strict';
 
   window.NewReservation = React.createClass({
-    handleSubmit: function(){
+    mixins: [React.addons.LinkedStateMixin],
+
+    getInitialState: function(){
+      return {
+        origin: "",
+        destination: "",
+        date: "",
+        hour: 0,
+        minute: 0,
+        ampm: ""
+      };
+    },
+
+    handleSubmit: function(event){
+      event.preventDefault();
       debugger
     },
 
@@ -14,7 +28,7 @@
           <h3>New Reservation</h3>
           <form onSubmit={this.handleSubmit}>
             <label for="origin">From: </label>
-            <select name="reservation[origin]" id="origin">
+            <select valueLink={this.linkState("origin")} id="origin">
               <option></option>
               {
                 AirportStore.all().map(function(airport){
@@ -32,7 +46,7 @@
             </select>
             <br/>
             <label for="destination">To: </label>
-            <select name="reservation[destination]" id="destination">
+            <select valueLink={this.linkState("destination")} id="destination">
               <option></option>
               {
                 AirportStore.all().map(function(airport){
@@ -46,12 +60,12 @@
             </select>
             <br/>
             <label for="date">Date: </label>
-            <input type="date" name="reservation[date]" id="date"></input>
+            <input type="date" valueLink={this.linkState("date")} id="date"></input>
             <br/>
             <label for="hour">Departure Time: </label>
             <label for="minute"></label>
             <label for="ampm"></label>
-              <select name="reservation[hour]" id="hour">
+              <select valueLink={this.linkState("hour")} id="hour">
                 <option></option>
                 {
                   hours.map(function(hour){
@@ -63,7 +77,7 @@
                   })
                 }
               </select> :&nbsp;
-              <select name="reservation[minute]" id="minute">
+              <select valueLink={this.linkState("minute")} id="minute">
                 <option></option>
                 <option value={0}>00</option>
                 {
@@ -76,7 +90,7 @@
                   })
                 }
               </select>
-              <select name="reservation[ampm]" id="ampm">
+              <select valueLink={this.linkState("ampm")} id="ampm">
                 <option value="am">am</option>
                 <option value="pm">pm</option>
               </select>
