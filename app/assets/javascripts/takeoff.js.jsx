@@ -10,10 +10,24 @@
 
     var App = React.createClass({
       render: function(){
+        var sidebarItems = [];
+
+        if(this.props.location.pathname === "/"){
+          sidebarItems = [["Reservations", "reservations/index"],
+                          ["Previous Trips", "#"],
+                          ["Register my Jet", "#"]];
+        } else if(this.props.location.pathname === "/reservations/index"){
+          sidebarItems = [["Airports Map", "/"],
+                          ["Previous Trips", "#"],
+                          ["Register my Jet", "#"]];
+        }
+
+
+
         return (
           <div className="group">
-            <Navbar />
-            <Sidebar />
+            <Navbar  />
+            <Sidebar sidebarItems={sidebarItems}/>
             {this.props.children}
           </div>
         );
