@@ -38,6 +38,7 @@
       <Route path="/" component={App}>
         <IndexRoute component={Map}/>
         <Route path="reservations/index" component={Reservations}/>
+        <Route path="reservations/new" component={NewReservation} />
       </Route>
     );
 

@@ -69,11 +69,15 @@
     },
 
     _drawAirport: function(airport){
+      var that = this;
       var pos = new google.maps.LatLng(airport.lat, airport.lng);
       var marker = new google.maps.Marker({
         position: pos,
         map: this.map,
         airportId: airport.id
+      });
+      marker.addListener('click', function(){
+        that.onMarkerClick(airport);
       });
       this.markers.push(marker);
     },
@@ -86,6 +90,10 @@
           break;
         }
       }
+    },
+
+    onMarkerClick: function(airport){
+      this.props.history.pushState(null, "reservations/new", airport);
     },
 
     mapCenter: function(callback) {
