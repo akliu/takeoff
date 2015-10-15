@@ -20,6 +20,11 @@
           sidebarItems = [["Airports Map", "/"],
                           ["Previous Trips", "#"],
                           ["Register my Jet", "#"]];
+        } else if(this.props.location.pathname === "/reservations/new"){
+          sidebarItems = [["Airports Map", "/"],
+                          ["Reservations", "reservations/index"],
+                          ["Previous Trips", "#"],
+                          ["Register my Jet", "#"]];
         }
 
 

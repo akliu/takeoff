@@ -26,8 +26,8 @@
     render: function(){
 
       return (
-        <div>
-          <h3>New Reservation</h3>
+        <div className="reservation-list modal-content">
+          <h2>New Reservation</h2>
           <form onSubmit={this.handleSubmit}>
             <label>From: </label>
             <select valueLink={this.linkState("origin")} id="origin">
