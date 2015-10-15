@@ -11,7 +11,7 @@
     var App = React.createClass({
       render: function(){
         return (
-          <div>
+          <div className="group">
             <Navbar />
             <Sidebar />
             {this.props.children}

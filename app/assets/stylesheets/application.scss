@@ -18,16 +18,32 @@
 @import "bootstrap";
 
 body {
-  // background-image: url(http://www.evolutionjet.aero/assets/pict/background/body_17.jpg);
   background-image: url(asset_path("takeoff_background_1.jpg"))
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+#content{
+  height: 100%;
+}
+
+.group {
+  height: 100%;
+}
+
 .map {
-  width: 800px;
-  height: 500px;
+  width: 80%;
+  height: 85%;
+  min-width: 500px;
+  min-height: 350px;
   float: right;
-  margin-right: 50px;
-  margin-right: 150px;
+  margin-right: 5%;
   position: relative;
 }
 
@@ -37,17 +53,28 @@ body {
 
 .sidebar-nav {
   float: left;
-  // background: rgba(255, 255, 255, 0.67);
+  width: 150px;
+  margin-left: 20px;
+}
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
 }
 
 .sidebar-nav li {
   display: block;
 }
 
+.navbar-top {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .reservation-list {
-  margin: auto;
+  width: 70%;
   float: right;
-  margin-right: 200px;
+  margin-right: 10%;
   padding: 15px;
   background: rgba(255, 255, 255, 0.6);
 }

@@ -5,7 +5,7 @@
 
     render: function(){
       return (
-        <nav className="navbar navbar-default">
+        <nav className="navbar navbar-default navbar-top">
           <div className="container-fluid">
 
             <div className="navbar-header">
