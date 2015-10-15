@@ -18,7 +18,8 @@
 @import "bootstrap";
 
 body {
-  background-image: url(asset_path("takeoff_background_1.jpg"))
+  background-image: url(asset_path("takeoff_background_1.jpg"));
+  background-attachment: fixed;
 }
 
 html {

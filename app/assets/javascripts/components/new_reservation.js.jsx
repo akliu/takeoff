@@ -13,14 +13,20 @@
         destination: "",
         date: "",
         hour: 0,
-        minute: 0,
+        minute: "",
         ampm: ""
       };
     },
 
     handleSubmit: function(event){
       event.preventDefault();
-      debugger
+      ApiUtil.createReservation(this.state);
+      this.props.history.pushState(null, "reservations/index");
+      // var reservationParams = {
+      //   origin: this.state.origin,
+      //   destination: this.state.destination,
+      //   date: this.
+      // }
     },
 
     render: function(){
@@ -88,6 +94,7 @@
               </select>&nbsp;
               &nbsp;
               <select valueLink={this.linkState("ampm")} id="ampm">
+                <option></option>
                 <option value="am">am</option>
                 <option value="pm">pm</option>
               </select>

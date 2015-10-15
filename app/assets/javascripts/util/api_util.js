@@ -28,5 +28,16 @@ ApiUtil = {
         ApiActions.receiveReservations(reservations);
       }
     });
+  },
+
+  createReservation: function(params){
+    $.ajax({
+      url: "api/reservations",
+      method: "POST",
+      data: params,
+      success: function(reservations){
+        ApiActions.receiveReservations(reservations);
+      }
+    });
   }
 };

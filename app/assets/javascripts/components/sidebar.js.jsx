@@ -22,6 +22,3 @@
 
 
 }());
-            // <li><Link to="reservations/index">View Reservations</Link></li>
-            // <li><a href="#">Previous Trips</a></li>
-            // <li><a href="#">Register My Jet</a></li>
