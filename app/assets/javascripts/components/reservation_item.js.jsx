@@ -2,6 +2,11 @@
   'use strict';
 
   window.ReservationItem = React.createClass({
+    _handleDelete: function(event){
+      event.preventDefault();
+      ApiUtil.deleteReservation(this.props.reservation.id);
+    },
+
     render: function(){
       var titleDate = moment(this.props.reservation.departure_time).format('dddd') +
           ", " + moment(this.props.reservation.departure_time).format('MMMM Do');
@@ -25,7 +30,7 @@
             <li>To: {destinationName} ({destinationCode})</li>
             <li>Departure Time: {itemDate}</li>
             <li>Aircraft: {aircraft}</li>
-            <li><a href='#'>Edit</a>    <a href='#'>Cancel</a></li>
+            <li><a href='#'>Edit</a>    <a href onClick={this._handleDelete}>Cancel</a></li>
           </ul>
         </div>
       );
@@ -35,13 +40,3 @@
   });
 
 }(this));
-
-          // <h3>To +{this.props.reservation.destination_name}+ on +
-          //           this.props.reservation.departure_time</h3>
-          // <ul>
-          //   <li>Reservation Id: {this.props.reservation.id}</li>
-          //   <li>Reservation user_id: {this.props.reservation.user_id}</li>
-          //   <li>Reservation origin: {this.props.reservation.origin_name}</li>
-          //   <li>Reservation destination: {this.props.reservation.destination_name}</li>
-          //   <li>Reservation jet_id: {this.props.reservation.jet_id}</li>
-          // </ul>

@@ -39,5 +39,15 @@ ApiUtil = {
         ApiActions.receiveReservations(reservations);
       }
     });
+  },
+
+  deleteReservation: function(reservation_id){
+    $.ajax({
+      url: "api/reservations/" + reservation_id,
+      method: "DELETE",
+      success: function(reservations){
+        ApiActions.receiveReservations(reservations);
+      }
+    });
   }
 };

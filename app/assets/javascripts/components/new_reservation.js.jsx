@@ -22,11 +22,6 @@
       event.preventDefault();
       ApiUtil.createReservation(this.state);
       this.props.history.pushState(null, "reservations/index");
-      // var reservationParams = {
-      //   origin: this.state.origin,
-      //   destination: this.state.destination,
-      //   date: this.
-      // }
     },
 
     render: function(){

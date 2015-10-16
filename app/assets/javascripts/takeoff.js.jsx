@@ -28,7 +28,6 @@
         }
 
 
-
         return (
           <div className="group">
             <Navbar  />
