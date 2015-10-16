@@ -1,16 +1,25 @@
 (function(root) {
   'use strict';
 
+  var _airportsInView = [];
   var _airports = [];
   var CHANGE_EVENT = "change";
 
   var loadAirports = function(airports){
+    _airportsInView = airports;
+  };
+
+  var loadAllAirports = function(airports){
     _airports = airports;
   };
 
   var AirportStore = root.AirportStore = $.extend({}, EventEmitter.prototype, {
     all: function(){
       return _airports.slice();
+    },
+    
+    inView: function(){
+      return _airportsInView.slice();
     },
 
     addChangeListener: function(callback){
@@ -26,6 +35,10 @@
       switch(action.actionType){
         case AirportConstants.AIRPORTS_RECEIVED:
           loadAirports(action.payload);
+          AirportStore.emit(CHANGE_EVENT);
+          break;
+        case AirportConstants.ALL_AIRPORTS_RECEIVED:
+          loadAllAirports(action.payload);
           AirportStore.emit(CHANGE_EVENT);
           break;
       }

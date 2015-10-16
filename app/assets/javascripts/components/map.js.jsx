@@ -12,7 +12,7 @@
 
   window.Map = React.createClass({
     getInitialState: function(){
-        return({airports: AirportStore.all()});
+        return({airports: AirportStore.inView()});
     },
 
     componentDidMount: function(){
@@ -31,7 +31,7 @@
         };
         this.map = new google.maps.Map(map, mapOptions);
         this.registerListeners();
-        ApiUtil.fetchAirports();
+        ApiUtil.fetchAllAirports();
       }.bind(this));
         FilterParamsStore.addChangeListener(this._filtersChanged);
         this.markers = [];
@@ -43,7 +43,7 @@
 
     _updateAirports: function(){
       var toRemove = this.markers.slice();
-      this.setState({airports: AirportStore.all()});
+      this.setState({airports: AirportStore.inView()});
       var toAdd = [];
 
       this.state.airports.forEach(function(airport){

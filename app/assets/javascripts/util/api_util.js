@@ -20,6 +20,16 @@ ApiUtil = {
     });
   },
 
+  fetchAllAirports: function(filterParams){
+    $.ajax({
+      url: "api/airports",
+      method: "GET",
+      success: function(airports){
+        ApiActions.receiveAllAirports(airports);
+      }
+    });
+  },
+
   fetchReservations: function(){
     $.ajax({
       url: "api/reservations",

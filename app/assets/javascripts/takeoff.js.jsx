@@ -25,6 +25,11 @@
                           ["Reservations", "reservations/index"],
                           ["Previous Trips", "#"],
                           ["Register my Jet", "#"]];
+        } else if(this.props.location.pathname === "/reservation/edit"){
+          sidebarItems = [["Airports Map", "/"],
+                          ["Reservations", "reservations/index"],
+                          ["Previous Trips", "#"],
+                          ["Register my Jet", "#"]];
         }
 
 

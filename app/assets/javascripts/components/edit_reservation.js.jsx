@@ -22,7 +22,6 @@
     handleSubmit: function(event){
       event.preventDefault();
       var params = $.extend({}, this.state, {id: this.props.location.query.id});
-      debugger
       ApiUtil.editReservation(params);
       this.props.history.pushState(null, "reservations/index");
     },
@@ -31,7 +30,7 @@
 
       return (
         <div className="reservation-list modal-content">
-          <h2>New Reservation</h2>
+          <h2>Change Reservation</h2>
           <form onSubmit={this.handleSubmit}>
             <label>From: </label>
             <select valueLink={this.linkState("origin")} id="origin">
@@ -97,7 +96,7 @@
                 <option value="pm">pm</option>
               </select>
               <br/>
-              <input type="submit" value="Make Reservation"/>
+              <input type="submit" value="Update Reservation"/>
           </form>
         </div>
       );

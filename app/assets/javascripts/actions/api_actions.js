@@ -6,6 +6,13 @@ ApiActions = {
     });
   },
 
+  receiveAllAirports: function(airports) {
+    AppDispatcher.dispatch({
+      actionType: AirportConstants.ALL_AIRPORTS_RECEIVED,
+      payload: airports
+    });
+  },
+
   receiveReservations: function(reservations) {
     AppDispatcher.dispatch({
       actionType: ReservationConstants.RESERVATIONS_RECEIVED,
