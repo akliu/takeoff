@@ -2,9 +2,17 @@
   'use strict';
 
   window.ReservationItem = React.createClass({
+    mixins: [ReactRouter.History],
+
     _handleDelete: function(event){
       event.preventDefault();
       ApiUtil.deleteReservation(this.props.reservation.id);
+    },
+
+    _handleEdit: function(event){
+      event.preventDefault();
+      debugger
+      this.history.pushState(null, "reservation/edit", {id: this.props.reservation.id});
     },
 
     render: function(){
@@ -30,7 +38,10 @@
             <li>To: {destinationName} ({destinationCode})</li>
             <li>Departure Time: {itemDate}</li>
             <li>Aircraft: {aircraft}</li>
-            <li><a href='#'>Edit</a>    <a href onClick={this._handleDelete}>Cancel</a></li>
+            <li>
+              <a href onClick={this._handleEdit}>Edit</a>
+              <a href onClick={this._handleDelete}>Cancel</a>
+            </li>
           </ul>
         </div>
       );

@@ -13,6 +13,14 @@
       return _reservations.slice();
     },
 
+    find: function(id){
+      for(var i = 0; i < _reservations.length; i++){
+        if(_reservations[i].id === id){
+          return _reservations[i];
+        }
+      }
+    },
+
     addChangeListener: function(callback){
       this.on(CHANGE_EVENT, callback);
     },

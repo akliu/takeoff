@@ -4,14 +4,14 @@
   var hours = [1,2,3,4,5,6,7,8,9,10,11,12];
   var minutes = [15,30,45];
 
-  window.NewReservation = React.createClass({
+  window.EditReservation = React.createClass({
     mixins: [React.addons.LinkedStateMixin],
 
     getInitialState: function(){
-
+      var reservation = ReservationStore.find(parseInt(this.props.location.query.id));
       return {
-        origin: this.props.location.query.name,
-        destination: "",
+        origin: reservation.origin_name,
+        destination: reservation.destination_name,
         date: "",
         hour: 0,
         minute: "",
@@ -21,7 +21,9 @@
 
     handleSubmit: function(event){
       event.preventDefault();
-      ApiUtil.createReservation(this.state);
+      var params = $.extend({}, this.state, {id: this.props.location.query.id});
+      debugger
+      ApiUtil.editReservation(params);
       this.props.history.pushState(null, "reservations/index");
     },
 

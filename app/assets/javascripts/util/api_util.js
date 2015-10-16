@@ -49,5 +49,16 @@ ApiUtil = {
         ApiActions.receiveReservations(reservations);
       }
     });
+  },
+
+  editReservation: function(params){
+    $.ajax({
+      url: "api/reservations/" + params.id,
+      method: "PATCH",
+      data: params,
+      success: function(reservations){
+        ApiActions.receiveReservations(reservations);
+      }
+    });
   }
 };
