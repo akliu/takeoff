@@ -11,7 +11,6 @@
 
     _handleEdit: function(event){
       event.preventDefault();
-      debugger
       this.history.pushState(null, "reservation/edit", {id: this.props.reservation.id});
     },
 
@@ -39,7 +38,7 @@
             <li>Departure Time: {itemDate}</li>
             <li>Aircraft: {aircraft}</li>
             <li>
-              <a href onClick={this._handleEdit}>Edit</a>
+              <a href onClick={this._handleEdit}>Edit</a>&nbsp;
               <a href onClick={this._handleDelete}>Cancel</a>
             </li>
           </ul>

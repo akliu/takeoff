@@ -21,7 +21,7 @@
             <h2>Reservations</h2>
               {
                 this.state.reservations.map(function(reservation){
-                  return <ReservationItem reservation={reservation} />;
+                  return <ReservationItem reservation={reservation} key={reservation.id}/>;
                 })
               }
           </div>
