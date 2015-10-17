@@ -14,18 +14,23 @@
 
         if(this.props.location.pathname === "/"){
           sidebarItems = [["Reservations", "reservations/index"],
-                          ["Previous Trips", "#"],
+                          ["Previous Trips", "reservations/past"],
                           ["Register my Jet", "#"]];
         } else if(this.props.location.pathname === "/reservations/index"){
           sidebarItems = [["Airports Map", "/"],
-                          ["Previous Trips", "#"],
+                          ["Previous Trips", "reservations/past"],
                           ["Register my Jet", "#"]];
         } else if(this.props.location.pathname === "/reservations/new"){
           sidebarItems = [["Airports Map", "/"],
                           ["Reservations", "reservations/index"],
-                          ["Previous Trips", "#"],
+                          ["Previous Trips", "reservations/past"],
                           ["Register my Jet", "#"]];
         } else if(this.props.location.pathname === "/reservation/edit"){
+          sidebarItems = [["Airports Map", "/"],
+                          ["Reservations", "reservations/index"],
+                          ["Previous Trips", "reservations/past"],
+                          ["Register my Jet", "#"]];
+        } else if(this.props.location.pathname === "/reservations/past"){
           sidebarItems = [["Airports Map", "/"],
                           ["Reservations", "reservations/index"],
                           ["Previous Trips", "#"],
@@ -49,6 +54,7 @@
         <Route path="reservations/index" component={Reservations}/>
         <Route path="reservations/new" component={NewReservation} />
         <Route path="reservation/edit" component={EditReservation} />
+        <Route path="reservations/past" component={PastReservations} />
       </Route>
     );
 

@@ -41,6 +41,17 @@ ApiUtil = {
     });
   },
 
+  fetchPastReservations: function(){
+    $.ajax({
+      url: "api/reservations",
+      method: "GET",
+      data: {time: "past"},
+      success: function(reservations){
+        ApiActions.receivePastReservations(reservations);
+      }
+    });
+  },
+
   createReservation: function(params){
     $.ajax({
       url: "api/reservations",

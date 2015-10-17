@@ -4,6 +4,9 @@ class Api::ReservationsController < ApplicationController
     if (params[:time] == "future")
       @reservations = Reservation.where("user_id = ? AND departure_time >= ?",
                                                 current_user.id, DateTime.now)
+    else
+      @reservations = Reservation.where("user_id = ? AND departure_time < ?",
+                                                current_user.id, DateTime.now)
     end
 
     @reservations = @reservations.map do |reservation|
