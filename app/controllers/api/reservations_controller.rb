@@ -1,6 +1,10 @@
 class Api::ReservationsController < ApplicationController
   def index
-    @reservations = Reservation.where("user_id = ?", current_user.id)
+
+    if (params[:time] == "future")
+      @reservations = Reservation.where("user_id = ? AND departure_time >= ?",
+                                                current_user.id, DateTime.now)
+    end
 
     @reservations = @reservations.map do |reservation|
         {id: reservation.id,

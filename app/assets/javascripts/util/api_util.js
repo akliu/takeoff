@@ -30,12 +30,13 @@ ApiUtil = {
     });
   },
 
-  fetchReservations: function(){
+  fetchFutureReservations: function(){
     $.ajax({
       url: "api/reservations",
       method: "GET",
+      data: {time: "future"},
       success: function(reservations){
-        ApiActions.receiveReservations(reservations);
+        ApiActions.receiveFutureReservations(reservations);
       }
     });
   },
@@ -46,7 +47,7 @@ ApiUtil = {
       method: "POST",
       data: params,
       success: function(reservations){
-        ApiActions.receiveReservations(reservations);
+        ApiActions.receiveFutureReservations(reservations);
       }
     });
   },
@@ -56,7 +57,7 @@ ApiUtil = {
       url: "api/reservations/" + reservation_id,
       method: "DELETE",
       success: function(reservations){
-        ApiActions.receiveReservations(reservations);
+        ApiActions.receiveFutureReservations(reservations);
       }
     });
   },
@@ -67,7 +68,7 @@ ApiUtil = {
       method: "PATCH",
       data: params,
       success: function(reservations){
-        ApiActions.receiveReservations(reservations);
+        ApiActions.receiveFutureReservations(reservations);
       }
     });
   }

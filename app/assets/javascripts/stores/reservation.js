@@ -1,22 +1,31 @@
 (function(root) {
   'use strict';
 
-  var _reservations =[];
+  var _futureReservations =[];
+  var _pastReservations = [];
   var CHANGE_EVENT = "change";
 
-  var loadReservations = function(reservations){
-    _reservations = reservations;
+  var loadFutureReservations = function(reservations){
+    _futureReservations = reservations;
+  };
+
+  var loadPastReservations = function(reservations){
+    _pastReservations = reservations;
   };
 
   var ReservationStore = root.ReservationStore = $.extend({}, EventEmitter.prototype,{
-    all: function(){
-      return _reservations.slice();
+    futureReservations: function(){
+      return _futureReservations.slice();
+    },
+
+    pastReservations: function(){
+      return _pastReservations.slice();
     },
 
     find: function(id){
-      for(var i = 0; i < _reservations.length; i++){
-        if(_reservations[i].id === id){
-          return _reservations[i];
+      for(var i = 0; i < _futureReservations.length; i++){
+        if(_futureReservations[i].id === id){
+          return _futureReservations[i];
         }
       }
     },
@@ -31,9 +40,14 @@
 
     dispatcherID: AppDispatcher.register(function(action){
       switch(action.actionType){
-          case ReservationConstants.RESERVATIONS_RECEIVED:
-            loadReservations(action.payload);
+          case ReservationConstants.FUTURE_RESERVATIONS_RECEIVED:
+            loadFutureReservations(action.payload);
             ReservationStore.emit(CHANGE_EVENT);
+            break;
+          case ReservationConstants.PAST_RESERVATIONS_RECEIVED:
+            loadPastReservations(action.payload);
+            ReservationStore.emit(CHANGE_EVENT);
+            break;
       }
     })
   });

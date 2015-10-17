@@ -13,9 +13,9 @@ ApiActions = {
     });
   },
 
-  receiveReservations: function(reservations) {
+  receiveFutureReservations: function(reservations) {
     AppDispatcher.dispatch({
-      actionType: ReservationConstants.RESERVATIONS_RECEIVED,
+      actionType: ReservationConstants.FUTURE_RESERVATIONS_RECEIVED,
       payload: reservations
     });
   }

@@ -3,16 +3,16 @@
 
   window.Reservations = React.createClass({
     getInitialState: function(){
-      return({reservations: ReservationStore.all()});
+      return({reservations: ReservationStore.futureReservations()});
     },
 
     componentDidMount: function(){
       ReservationStore.addChangeListener(this._updateReservations);
-      ApiUtil.fetchReservations();
+      ApiUtil.fetchFutureReservations();
     },
 
     _updateReservations: function(){
-      this.setState({reservations: ReservationStore.all()});
+      this.setState({reservations: ReservationStore.futureReservations()});
     },
 
     render: function(){
