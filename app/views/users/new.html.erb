@@ -1,6 +1,8 @@
-<h2>Sign Up</h2>
+<h1 class="title">Takeoff</h1>
+<br>
+<h3 class="sign-up-in-form">Sign Up</h3>
 
-<form action="<%= users_url %>" method="post">
+<form class="sign-up-in-form" action="<%= users_url %>" method="post">
   <%= auth_token_input %>
   <label>
     Username
@@ -13,4 +15,9 @@
   </label>
 
   <input type="submit" value="Sign Up">
+  <br>
+  <br>
+  <p>Already a flyer?
+    <%= link_to "Sign in here!", new_session_url %>
+  </p>
 </form>
