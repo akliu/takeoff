@@ -26,7 +26,7 @@
       var destinationName = this.props.reservation.destination_name;
       var destinationCode = this.props.reservation.destination_code;
 
-      var aircraft = this.props.reservation.jet_id;
+      var aircraft = this.props.reservation.jet;
 
       var editable;
       if(this.props.past !== "true"){

@@ -16,7 +16,7 @@ class Api::ReservationsController < ApplicationController
           origin_code: reservation.origin.code,
           destination_name: reservation.destination.name,
           destination_code: reservation.destination.code,
-          jet_id: reservation.jet_id,
+          jet: reservation.jet.model,
           departure_time: reservation.departure_time,
           created_at: reservation.created_at,
           updated_at: reservation.updated_at
@@ -27,7 +27,7 @@ class Api::ReservationsController < ApplicationController
   def create
     origin_id = Airport.find_by(name: params[:origin]).id
     destination_id = Airport.find_by(name: params[:destination]).id
-    jet_id = 777
+    jet_id = params[:jet_id]
     date = params[:date].split("-")
     hour = params[:hour].to_i
     hour += 12 if params[:ampm] == "pm"
@@ -48,7 +48,7 @@ class Api::ReservationsController < ApplicationController
           origin_code: reservation.origin.code,
           destination_name: reservation.destination.name,
           destination_code: reservation.destination.code,
-          jet_id: reservation.jet_id,
+          jet: reservation.jet.model,
           departure_time: reservation.departure_time,
           created_at: reservation.created_at,
           updated_at: reservation.updated_at
@@ -62,7 +62,7 @@ class Api::ReservationsController < ApplicationController
 
     origin_id = Airport.find_by(name: params[:origin]).id
     destination_id = Airport.find_by(name: params[:destination]).id
-    jet_id = 777
+    jet_id = params[:jet_id]
     date = params[:date].split("-")
     hour = params[:hour].to_i
     hour += 12 if params[:ampm] == "pm"
@@ -82,7 +82,7 @@ class Api::ReservationsController < ApplicationController
           origin_code: reservation.origin.code,
           destination_name: reservation.destination.name,
           destination_code: reservation.destination.code,
-          jet_id: reservation.jet_id,
+          jet: reservation.jet.model,
           departure_time: reservation.departure_time,
           created_at: reservation.created_at,
           updated_at: reservation.updated_at
@@ -105,7 +105,7 @@ class Api::ReservationsController < ApplicationController
           origin_code: reservation.origin.code,
           destination_name: reservation.destination.name,
           destination_code: reservation.destination.code,
-          jet_id: reservation.jet_id,
+          jet: reservation.jet.model,
           departure_time: reservation.departure_time,
           created_at: reservation.created_at,
           updated_at: reservation.updated_at

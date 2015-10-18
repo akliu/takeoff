@@ -46,7 +46,6 @@
     },
 
     render: function(){
-      console.log(this.state.origin);
       return (
         <div className="reservation-list modal-content">
           <h2>New Reservation</h2>
