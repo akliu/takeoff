@@ -16,7 +16,7 @@
         hour: 0,
         minute: "",
         ampm: "",
-        jet_id: "",
+        jet_id: -1,
         availableJets: JetStore.all()
       };
     },
@@ -38,14 +38,21 @@
       this.props.history.pushState(null, "reservations/index");
     },
 
-    render: function(){
+    handleOriginChange: function(event){
+      event.preventDefault();
+      this.setState({origin: event.currentTarget.value,
+                      jet_id: -1});
+      ApiUtil.fetchJets({origin: event.currentTarget.value});
+    },
 
+    render: function(){
+      console.log(this.state.origin);
       return (
         <div className="reservation-list modal-content">
           <h2>New Reservation</h2>
           <form onSubmit={this.handleSubmit}>
             <label>From: </label>
-            <select valueLink={this.linkState("origin")}
+            <select onChange={this.handleOriginChange} value={this.state.origin}
                     id="origin">
               <option></option>
               {
@@ -110,7 +117,7 @@
               </select>
               <br/>
               <label>Aircraft: </label>
-              <select valueLink={this.linkState("jet")} id="jet">
+              <select valueLink={this.linkState("jet_id")} id="jet">
                 <option></option>
                 {
                   this.state.availableJets.map(function(jet){
@@ -132,3 +139,8 @@
   });
 
 }(this));
+
+
+
+// <select valueLink={this.linkState("origin")}
+//         id="origin">
