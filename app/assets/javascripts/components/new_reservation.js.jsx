@@ -23,7 +23,7 @@
 
     componentDidMount: function(){
       JetStore.addChangeListener(this._updateJets);
-      ApiUtil.fetchJets(this.state.origin);
+      ApiUtil.fetchJets({origin: this.state.origin});
     },
 
     _updateJets: function(){
@@ -109,6 +109,7 @@
                 <option value="pm">pm</option>
               </select>
               <br/>
+              <label>Aircraft: </label>
               <select valueLink={this.linkState("jet")} id="jet">
                 <option></option>
                 {
