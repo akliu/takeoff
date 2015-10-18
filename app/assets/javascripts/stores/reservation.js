@@ -10,7 +10,6 @@
   };
 
   var loadPastReservations = function(reservations){
-    debugger
     _pastReservations = reservations;
   };
 
@@ -46,7 +45,6 @@
             ReservationStore.emit(CHANGE_EVENT);
             break;
           case ReservationConstants.PAST_RESERVATIONS_RECEIVED:
-          debugger
             loadPastReservations(action.payload);
             ReservationStore.emit(CHANGE_EVENT);
             break;

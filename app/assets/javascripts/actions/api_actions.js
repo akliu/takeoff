@@ -19,9 +19,8 @@ ApiActions = {
       payload: reservations
     });
   },
-  
+
   receivePastReservations: function(reservations) {
-    debugger
     AppDispatcher.dispatch({
       actionType: ReservationConstants.PAST_RESERVATIONS_RECEIVED,
       payload: reservations

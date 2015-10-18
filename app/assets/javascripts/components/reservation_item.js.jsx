@@ -28,6 +28,15 @@
 
       var aircraft = this.props.reservation.jet_id;
 
+      var editable;
+      if(this.props.past !== "true"){
+        editable = (
+          <li>
+            <a href onClick={this._handleEdit}>Edit</a>&nbsp;
+            <a href onClick={this._handleDelete}>Cancel</a>
+          </li>
+        );
+      }
 
       return (
         <div className="reservation-index-item">
@@ -37,10 +46,7 @@
             <li>To: {destinationName} ({destinationCode})</li>
             <li>Departure Time: {itemDate}</li>
             <li>Aircraft: {aircraft}</li>
-            <li>
-              <a href onClick={this._handleEdit}>Edit</a>&nbsp;
-              <a href onClick={this._handleDelete}>Cancel</a>
-            </li>
+            {editable}
           </ul>
         </div>
       );

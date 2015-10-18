@@ -22,7 +22,9 @@
             <h2>Past Trips</h2>
               {
                 this.state.reservations.map(function(reservation){
-                  return <ReservationItem reservation={reservation} key={reservation.id}/>;
+                  return <ReservationItem reservation={reservation}
+                                          key={reservation.id}
+                                          past="true"/>;
                 })
               }
           </div>
