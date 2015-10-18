@@ -15,6 +15,8 @@ class Airport < ActiveRecord::Base
     foreign_key: :destination_id
   )
 
+  has_many :jets
+
   def self.in_bounds(bounds)
     @airports = Airport.where("lat < ?", bounds[:northEast][:lat])
         .where("lat > ?", bounds[:southWest][:lat])

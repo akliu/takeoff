@@ -17,4 +17,6 @@ class Reservation < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :destination_id
   )
+
+  belongs_to :jet
 end
