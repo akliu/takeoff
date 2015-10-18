@@ -59,6 +59,8 @@
               <br/>
               <input type="submit" value="Register"/>
           </form>
+          <img className="jet"
+            src="http://res.cloudinary.com/dx1lykanb/image/upload/c_scale,w_207/v1445208108/sample.jpg" />
         </div>
       );
     }

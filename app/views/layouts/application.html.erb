@@ -7,6 +7,14 @@
   <%= csrf_meta_tags %>
   <script src="https://maps.googleapis.com/maps/api/js?key=#{ENV[google_api_key]}"
     type="text/javascript"></script>
+  <script src="http://widget.cloudinary.com/global/all.js" type="text/javascript" charset="utf-8"></script>
+
+  <script type="text/javascript" charset="utf-8">
+    window.CLOUDINARY_OPTIONS = {
+      cloud_name: "<%=ENV['CLOUD_NAME']%>",
+      upload_preset: "<%= ENV['UPLOAD_PRESET'] %>"
+    };
+  </script>
 </head>
 <body>
 
