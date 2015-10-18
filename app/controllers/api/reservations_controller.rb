@@ -17,6 +17,7 @@ class Api::ReservationsController < ApplicationController
           destination_name: reservation.destination.name,
           destination_code: reservation.destination.code,
           jet: reservation.jet.model,
+          jet_id: reservation.jet.id,
           departure_time: reservation.departure_time,
           created_at: reservation.created_at,
           updated_at: reservation.updated_at
@@ -49,6 +50,7 @@ class Api::ReservationsController < ApplicationController
           destination_name: reservation.destination.name,
           destination_code: reservation.destination.code,
           jet: reservation.jet.model,
+          jet_id: reservation.jet.id,
           departure_time: reservation.departure_time,
           created_at: reservation.created_at,
           updated_at: reservation.updated_at
@@ -83,6 +85,7 @@ class Api::ReservationsController < ApplicationController
           destination_name: reservation.destination.name,
           destination_code: reservation.destination.code,
           jet: reservation.jet.model,
+          jet_id: reservation.jet.id,
           departure_time: reservation.departure_time,
           created_at: reservation.created_at,
           updated_at: reservation.updated_at
@@ -106,6 +109,7 @@ class Api::ReservationsController < ApplicationController
           destination_name: reservation.destination.name,
           destination_code: reservation.destination.code,
           jet: reservation.jet.model,
+          jet_id: reservation.jet.id,
           departure_time: reservation.departure_time,
           created_at: reservation.created_at,
           updated_at: reservation.updated_at

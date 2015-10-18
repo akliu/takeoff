@@ -15,8 +15,19 @@
         date: "",
         hour: 0,
         minute: "",
-        ampm: ""
+        ampm: "",
+        jet_id: reservation.jet_id,
+        availableJets: JetStore.all()
       };
+    },
+
+    componentDidMount: function(){
+      JetStore.addChangeListener(this._updateJets);
+      ApiUtil.fetchJets({origin: this.state.origin});
+    },
+
+    _updateJets: function(){
+      this.setState({availableJets: JetStore.all()});
     },
 
     handleSubmit: function(event){
@@ -28,6 +39,13 @@
       this.props.history.pushState(null, "reservations/index");
     },
 
+    handleOriginChange: function(event){
+      event.preventDefault();
+      this.setState({origin: event.currentTarget.value,
+                      jet_id: -1});
+      ApiUtil.fetchJets({origin: event.currentTarget.value});
+    },
+
     render: function(){
 
       return (
@@ -35,7 +53,8 @@
           <h2>Change Reservation</h2>
           <form onSubmit={this.handleSubmit}>
             <label>From: </label>
-            <select valueLink={this.linkState("origin")} id="origin">
+            <select onChange={this.handleOriginChange} value={this.state.origin}
+                    id="origin">
               <option></option>
               {
                 AirportStore.all().map(function(airport){
@@ -96,6 +115,20 @@
                 <option></option>
                 <option value="am">am</option>
                 <option value="pm">pm</option>
+              </select>
+              <br/>
+              <label>Aircraft: </label>
+              <select valueLink={this.linkState("jet_id")} id="jet">
+                <option></option>
+                {
+                  this.state.availableJets.map(function(jet){
+                    return (
+                      <option value={jet.id} key={jet.id}>
+                        {jet.model}
+                      </option>
+                    );
+                  })
+                }
               </select>
               <br/>
               <input type="submit" value="Update Reservation"/>
