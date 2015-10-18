@@ -33,12 +33,12 @@
         this.registerListeners();
         ApiUtil.fetchAllAirports();
       }.bind(this));
-        FilterParamsStore.addChangeListener(this._filtersChanged);
+        FilterParamsStore.addMapChangeListener(this._filtersChanged);
         this.markers = [];
     },
 
     _filtersChanged: function(){
-      ApiUtil.fetchAirports(FilterParamsStore.params());
+      ApiUtil.fetchAirports(FilterParamsStore.mapParams());
     },
 
     _updateAirports: function(){

@@ -25,5 +25,12 @@ ApiActions = {
       actionType: ReservationConstants.PAST_RESERVATIONS_RECEIVED,
       payload: reservations
     });
+  },
+
+  receiveJets: function(jets) {
+    AppDispatcher.dispatch({
+      actionType: JetConstants.JETS_RECEIVED,
+      payload: jets
+    });
   }
 };

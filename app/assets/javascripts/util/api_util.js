@@ -82,5 +82,17 @@ ApiUtil = {
         ApiActions.receiveFutureReservations(reservations);
       }
     });
+  },
+
+  fetchJets: function(filterParams){
+    $.ajax({
+      url: "api/jets",
+      method: "GET",
+      data: filterParams,
+      success: function(jets){
+        ApiActions.receiveJets(jets);
+      }
+    });
   }
+
 };

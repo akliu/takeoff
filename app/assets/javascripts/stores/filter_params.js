@@ -1,24 +1,24 @@
 (function(root) {
   'use strict';
 
-  var _params = {};
-  var CHANGE_EVENT = "change";
+  var _mapParams = {};
+  var MAP_CHANGE_EVENT = "map_change";
 
   var FilterParamsStore = root.FilterParamsStore = $.extend({}, EventEmitter.prototype, {
-    params: function(){
-        return $.extend({}, _params);
+    mapParams: function(){
+        return $.extend({}, _mapParams);
     },
-    addChangeListener: function(callback){
-      this.on(CHANGE_EVENT, callback);
+    addMapChangeListener: function(callback){
+      this.on(MAP_CHANGE_EVENT, callback);
     },
-    removeChangeListener: function(callback){
-      this.removeChangeListener(CHANGE_EVENT, callback);
+    removeMapChangeListener: function(callback){
+      this.removeChangeListener(MAP_CHANGE_EVENT, callback);
     },
     dispatcherID: AppDispatcher.register(function(payload){
       switch(payload.actionType){
         case FilterConstants.UPDATE_BOUNDS:
-          _params.bounds = payload.bounds;
-          FilterParamsStore.emit(CHANGE_EVENT);
+          _mapParams.bounds = payload.bounds;
+          FilterParamsStore.emit(MAP_CHANGE_EVENT);
           break;
       }
     })

@@ -15,8 +15,19 @@
         date: "",
         hour: 0,
         minute: "",
-        ampm: ""
+        ampm: "",
+        jet_id: "",
+        availableJets: JetStore.all()
       };
+    },
+
+    componentDidMount: function(){
+      JetStore.addChangeListener(this._updateJets);
+      ApiUtil.fetchJets(this.state.origin);
+    },
+
+    _updateJets: function(){
+      this.setState({availableJets: JetStore.all()});
     },
 
     handleSubmit: function(event){
@@ -34,7 +45,8 @@
           <h2>New Reservation</h2>
           <form onSubmit={this.handleSubmit}>
             <label>From: </label>
-            <select valueLink={this.linkState("origin")} id="origin">
+            <select valueLink={this.linkState("origin")}
+                    id="origin">
               <option></option>
               {
                 AirportStore.all().map(function(airport){
@@ -95,6 +107,19 @@
                 <option></option>
                 <option value="am">am</option>
                 <option value="pm">pm</option>
+              </select>
+              <br/>
+              <select valueLink={this.linkState("jet")} id="jet">
+                <option></option>
+                {
+                  this.state.availableJets.map(function(jet){
+                    return (
+                      <option value={jet.id} key={jet.id}>
+                        {jet.model}
+                      </option>
+                    );
+                  })
+                }
               </select>
               <br/>
               <input type="submit" value="Make Reservation"/>
