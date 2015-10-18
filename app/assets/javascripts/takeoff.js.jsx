@@ -15,16 +15,16 @@
         if(this.props.location.pathname === "/"){
           sidebarItems = [["Reservations", "reservations/index"],
                           ["Previous Trips", "reservations/past"],
-                          ["Register my Jet", "#"]];
+                          ["Register my Jet", "jet/registration"]];
         } else if(this.props.location.pathname === "/reservations/index"){
           sidebarItems = [["Airports Map", "/"],
                           ["Previous Trips", "reservations/past"],
-                          ["Register my Jet", "#"]];
+                          ["Register my Jet", "jet/registration"]];
         } else if(this.props.location.pathname === "/reservations/new"){
           sidebarItems = [["Airports Map", "/"],
                           ["Reservations", "reservations/index"],
                           ["Previous Trips", "reservations/past"],
-                          ["Register my Jet", "#"]];
+                          ["Register my Jet", "jet/registration"]];
         } else if(this.props.location.pathname === "/reservation/edit"){
           sidebarItems = [["Airports Map", "/"],
                           ["Reservations", "reservations/index"],
@@ -33,7 +33,11 @@
         } else if(this.props.location.pathname === "/reservations/past"){
           sidebarItems = [["Airports Map", "/"],
                           ["Reservations", "reservations/index"],
-                          ["Register my Jet", "#"]];
+                          ["Register my Jet", "jet/registration"]];
+        } else if(this.props.location.pathname === "/jet/registration"){
+          sidebarItems = [["Airports Map", "/"],
+                          ["Reservations", "reservations/index"],
+                          ["Previous Trips", "reservations/past"]];
         }
 
 
@@ -54,6 +58,7 @@
         <Route path="reservations/new" component={NewReservation} />
         <Route path="reservation/edit" component={EditReservation} />
         <Route path="reservations/past" component={PastReservations} />
+        <Route path="jet/registration" component={NewJet} />
       </Route>
     );
 

@@ -93,6 +93,17 @@ ApiUtil = {
         ApiActions.receiveJets(jets);
       }
     });
+  },
+
+  addJet: function(params){
+    $.ajax({
+      url: "api/jets",
+      method: "POST",
+      data: params,
+      success: function(jets){
+        ApiActions.receiveJets(jets);
+      }
+    });
   }
 
 };

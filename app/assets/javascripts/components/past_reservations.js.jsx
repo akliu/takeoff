@@ -7,7 +7,6 @@
     },
 
     componentDidMount: function(){
-      debugger
       ReservationStore.addChangeListener(this._updateReservations);
       ApiUtil.fetchPastReservations();
     },
