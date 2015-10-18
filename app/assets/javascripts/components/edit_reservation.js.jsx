@@ -21,7 +21,9 @@
 
     handleSubmit: function(event){
       event.preventDefault();
-      var params = $.extend({}, this.state, {id: this.props.location.query.id});
+      var timezoneAndId = {id: this.props.location.query.id,
+                            timezone: -(new Date().getTimezoneOffset() / 60)};
+      var params = $.extend({}, this.state, timezoneAndId);
       ApiUtil.editReservation(params);
       this.props.history.pushState(null, "reservations/index");
     },

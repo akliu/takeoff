@@ -67,7 +67,7 @@ class Api::ReservationsController < ApplicationController
     hour = params[:hour].to_i
     hour += 12 if params[:ampm] == "pm"
     departure_time = DateTime.new(date[0].to_i, date[1].to_i, date[2].to_i,
-                      hour, params[:minute].to_i)
+                            hour, params[:minute].to_i, 0, params[:timezone])
 
     @reservation.update!(user_id: current_user.id, origin_id: origin_id,
             destination_id: destination_id, jet_id: jet_id,
