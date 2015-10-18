@@ -21,7 +21,9 @@
 
     handleSubmit: function(event){
       event.preventDefault();
-      ApiUtil.createReservation(this.state);
+      var timeOffset = {timezone: -(new Date().getTimezoneOffset() / 60)};
+      var params = $.extend({}, this.state, timeOffset);
+      ApiUtil.createReservation(params);
       this.props.history.pushState(null, "reservations/index");
     },
 
