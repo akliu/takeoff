@@ -98,6 +98,7 @@ img.jet {
     -ms-transition: all 1s ease; /* IE 9 */
     -o-transition: all 1s ease; /* Opera */
     transition: all 1s ease;
+    transform:scale(0.3);
 }
 
 img.jet:hover {
@@ -105,5 +106,5 @@ img.jet:hover {
     -moz-transform:scale(1.1); /* Firefox */
     -ms-transform:scale(1.1); /* IE 9 */
     -o-transform:scale(1.1); /* Opera */
-     transform:scale(2);
+     transform:scale(1);
 }
