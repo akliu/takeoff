@@ -99,7 +99,10 @@ img.jet {
     -o-transition: all 1s ease; /* Opera */
     transition: all .5s ease;
     // transform:scale(0.3);
-    width: 100%;
+    width: 275px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
     z-index: 0;
 }
 
@@ -112,10 +115,6 @@ img.jet:hover {
      z-index: 10;
 }
 
-img.jet:hover:after {
-  z-index: 5;
-}
-
 .jet-images {
   margin: auto;
   text-align: center;
@@ -124,6 +123,6 @@ img.jet:hover:after {
 
 .jet-images-item {
   display: inline-block;
-  padding: 15px;
+  padding: 30px;
   width: 25%;
 }

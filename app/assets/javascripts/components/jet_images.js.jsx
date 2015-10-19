@@ -2,10 +2,23 @@
   'use strict';
 
   var images = {
-    "Gulfstream 450": [
+    "Gulfstream 450":
+    [
     "https://res.cloudinary.com/dx1lykanb/image/upload/v1445210901/gulfstream_450/gulfstream_450_1.jpg",
     "https://res.cloudinary.com/dx1lykanb/image/upload/v1445210901/gulfstream_450/gulfstream_450_2.jpg",
     "https://res.cloudinary.com/dx1lykanb/image/upload/v1445208108/sample.jpg"
+    ],
+
+    "Gulfstream 550":
+    [
+    "https://res.cloudinary.com/dx1lykanb/image/upload/v1445220458/gulfstream_550/gulfstream_550_1.jpg",
+    "https://res.cloudinary.com/dx1lykanb/image/upload/v1445220458/gulfstream_550/gulfstream_550_2.jpg"
+    ],
+
+    "Gulfstream 650":
+    [
+    "https://res.cloudinary.com/dx1lykanb/image/upload/v1445220699/gulfstream_650/gulfstream_650_1.jpg",
+    "https://res.cloudinary.com/dx1lykanb/image/upload/v1445220699/gulfstream_650/gulfstream_650_2.jpg"
     ]
   };
 

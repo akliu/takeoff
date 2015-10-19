@@ -47,6 +47,7 @@
             <li>Departure Time: {itemDate}</li>
             <li>Aircraft: {aircraft}</li>
             {editable}
+            <JetImages jet={aircraft} />
           </ul>
         </div>
       );
