@@ -2,6 +2,16 @@
   'use strict';
 
   window.Price = React.createClass({
+    // getInitialState: function(){
+    //   return({price: ""});
+    // },
+
+    componentWillReceiveProps: function(newProps){
+      if(this.props.destination !== newProps.destination || this.props.origin !== newProps.origin){
+        this.calculatePrice(newProps);
+          }
+    },
+
     getDistance: function(lat1, lon1, lat2, lon2){
       var R = 6371; // Radius of the earth in km
       var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
@@ -20,17 +30,24 @@
       return deg * (Math.PI/180);
     },
 
-    render: function(){
-      var origin = AirportStore.findByName(this.props.origin);
-      var destination = AirportStore.findByName(this.props.destination);
-      var price = "";
+    calculatePrice: function(newProps){
+      var origin = AirportStore.findByName(newProps.origin);
+      var destination = AirportStore.findByName(newProps.destination);
+      var newPrice = "";
       if(JSON.stringify(origin) !== "{}" && JSON.stringify(destination) !== "{}"){
-        price = (10 * this.getDistance(origin.lat, origin.lng,
+        newPrice = (10 * this.getDistance(origin.lat, origin.lng,
                       destination.lat, destination.lng) + 2000).toFixed(2);
       }
+      // this.setState({price: newPrice});
+      newProps.updateForm(newPrice);
+      // return newPrice;
+    },
+
+    render: function(){
+      // var price = this.calculatePrice();
       return (
         <div>
-          Total Fare: {price}
+          Total Fare: {this.props.price}
         </div>
       );
     }

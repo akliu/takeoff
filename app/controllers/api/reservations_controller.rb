@@ -26,9 +26,10 @@ class Api::ReservationsController < ApplicationController
   end
 
   def create
+    price = params[:price].to_f
     origin_id = Airport.find_by(name: params[:origin]).id
     destination_id = Airport.find_by(name: params[:destination]).id
-    jet_id = params[:jet_id]
+    jet_id = params[:jetId]
     date = params[:date].split("-")
     hour = params[:hour].to_i
     hour += 12 if params[:ampm] == "pm"
@@ -37,7 +38,7 @@ class Api::ReservationsController < ApplicationController
 
     @reservation = Reservation.create(user_id: current_user.id, origin_id: origin_id,
             destination_id: destination_id, jet_id: jet_id,
-            departure_time: departure_time)
+            departure_time: departure_time, price: price)
 
 
     @reservations = Reservation.where("user_id = ?", current_user.id)
@@ -64,7 +65,7 @@ class Api::ReservationsController < ApplicationController
 
     origin_id = Airport.find_by(name: params[:origin]).id
     destination_id = Airport.find_by(name: params[:destination]).id
-    jet_id = params[:jet_id]
+    jet_id = params[:jetId]
     date = params[:date].split("-")
     hour = params[:hour].to_i
     hour += 12 if params[:ampm] == "pm"

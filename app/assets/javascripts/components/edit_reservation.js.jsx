@@ -16,7 +16,7 @@
         hour: 0,
         minute: "",
         ampm: "",
-        jet_id: reservation.jet_id,
+        jetId: reservation.jet_id,
         availableJets: JetStore.all()
       };
     },

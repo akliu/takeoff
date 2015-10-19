@@ -17,7 +17,8 @@
         minute: "",
         ampm: "",
         jetId: -1,
-        availableJets: JetStore.all()
+        availableJets: JetStore.all(),
+        price: ""
       };
     },
 
@@ -43,6 +44,11 @@
       this.setState({origin: event.currentTarget.value,
                       jetId: -1});
       ApiUtil.fetchJets({origin: event.currentTarget.value});
+      this.updatePrice(event.currentTarget.value, this.state.destination);
+    },
+
+    updatePrice: function(newPrice){
+      this.setState({price: newPrice});
     },
 
     render: function(){
@@ -131,7 +137,10 @@
               <br/>
               <input type="submit" value="Make Reservation"/>
           </form>
-          <Price origin={this.state.origin} destination={this.state.destination} />
+          <Price origin={this.state.origin}
+                  destination={this.state.destination}
+                  updateForm={this.updatePrice}
+                  price={this.state.price} />
           <JetImages jet={JetStore.findById(parseInt(this.state.jetId)).model} />
         </div>
       );
