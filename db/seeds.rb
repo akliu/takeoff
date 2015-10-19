@@ -16,3 +16,9 @@ Airport.create(lat: 37.7125731, lng: -122.2219368,
 
 Airport.create(lat: 37.3640847, lng: -121.9302246,
                 name: "San Jose International Airport", code: "SJC")
+
+Airport.create(lat: 45.5897731, lng: -122.5972882,
+                name: "Portland International Airport", code: "PDX")
+
+Airport.create(lat: 45.5330731, lng: -122.9497265,
+                name: "Hillsboro Airport", code: "HIO")

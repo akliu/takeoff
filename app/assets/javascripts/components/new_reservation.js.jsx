@@ -131,6 +131,7 @@
               <br/>
               <input type="submit" value="Make Reservation"/>
           </form>
+          <Price origin={this.state.origin} destination={this.state.destination} />
           <JetImages jet={JetStore.findById(parseInt(this.state.jetId)).model} />
         </div>
       );

@@ -17,9 +17,18 @@
     all: function(){
       return _airports.slice();
     },
-    
+
     inView: function(){
       return _airportsInView.slice();
+    },
+
+    findByName: function(name){
+      for(var i = 0; i < _airports.length; i++){
+        if(_airports[i].name === name){
+          return _airports[i];
+        }
+      }
+      return {};
     },
 
     addChangeListener: function(callback){
