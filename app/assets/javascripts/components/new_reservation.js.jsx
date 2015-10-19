@@ -16,7 +16,7 @@
         hour: 0,
         minute: "",
         ampm: "",
-        jet_id: -1,
+        jetId: -1,
         availableJets: JetStore.all()
       };
     },
@@ -41,7 +41,7 @@
     handleOriginChange: function(event){
       event.preventDefault();
       this.setState({origin: event.currentTarget.value,
-                      jet_id: -1});
+                      jetId: -1});
       ApiUtil.fetchJets({origin: event.currentTarget.value});
     },
 
@@ -116,7 +116,7 @@
               </select>
               <br/>
               <label>Aircraft: </label>
-              <select valueLink={this.linkState("jet_id")} id="jet">
+              <select valueLink={this.linkState("jetId")} id="jet">
                 <option></option>
                 {
                   this.state.availableJets.map(function(jet){
@@ -131,6 +131,7 @@
               <br/>
               <input type="submit" value="Make Reservation"/>
           </form>
+          <JetImages jet={JetStore.findById(parseInt(this.state.jetId))} />
         </div>
       );
     }
@@ -138,8 +139,3 @@
   });
 
 }(this));
-
-
-
-// <select valueLink={this.linkState("origin")}
-//         id="origin">

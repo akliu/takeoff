@@ -13,6 +13,15 @@
       return _jets.slice();
     },
 
+    findById: function(id){
+      for(var i = 0; i < _jets.length; i++){
+        if(_jets[i].id === id){
+          return _jets[i];
+        }
+      }
+      return {};
+    },
+
     addChangeListener: function(callback){
       this.on(CHANGE_EVENT, callback);
     },
