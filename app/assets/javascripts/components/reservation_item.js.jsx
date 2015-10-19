@@ -28,6 +28,8 @@
 
       var aircraft = this.props.reservation.jet;
 
+      var price = this.props.reservation.price;
+
       var editable;
       if(this.props.past !== "true"){
         editable = (
@@ -46,6 +48,7 @@
             <li>To: {destinationName} ({destinationCode})</li>
             <li>Departure Time: {itemDate}</li>
             <li>Aircraft: {aircraft}</li>
+            <li>Total Fare: {price}</li>
             {editable}
             <JetImages jet={aircraft} />
           </ul>

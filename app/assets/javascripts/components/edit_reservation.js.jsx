@@ -17,7 +17,8 @@
         minute: "",
         ampm: "",
         jetId: reservation.jet_id,
-        availableJets: JetStore.all()
+        availableJets: JetStore.all(),
+        price: reservation.price
       };
     },
 
@@ -42,8 +43,12 @@
     handleOriginChange: function(event){
       event.preventDefault();
       this.setState({origin: event.currentTarget.value,
-                      jet_id: -1});
+                      jetId: -1});
       ApiUtil.fetchJets({origin: event.currentTarget.value});
+    },
+
+    updatePrice: function(newPrice){
+      this.setState({price: newPrice});
     },
 
     render: function(){
@@ -118,7 +123,7 @@
               </select>
               <br/>
               <label>Aircraft: </label>
-              <select valueLink={this.linkState("jet_id")} id="jet">
+              <select valueLink={this.linkState("jetId")} id="jet">
                 <option></option>
                 {
                   this.state.availableJets.map(function(jet){
@@ -133,6 +138,11 @@
               <br/>
               <input type="submit" value="Update Reservation"/>
           </form>
+          <Price origin={this.state.origin}
+                  destination={this.state.destination}
+                  updateForm={this.updatePrice}
+                  price={this.state.price} />
+          <JetImages jet={JetStore.findById(parseInt(this.state.jetId)).model} />
         </div>
       );
     }

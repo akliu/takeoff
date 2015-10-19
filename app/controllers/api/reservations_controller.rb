@@ -20,7 +20,8 @@ class Api::ReservationsController < ApplicationController
           jet_id: reservation.jet.id,
           departure_time: reservation.departure_time,
           created_at: reservation.created_at,
-          updated_at: reservation.updated_at
+          updated_at: reservation.updated_at,
+          price: reservation.price
         }
     end
   end
@@ -54,7 +55,8 @@ class Api::ReservationsController < ApplicationController
           jet_id: reservation.jet.id,
           departure_time: reservation.departure_time,
           created_at: reservation.created_at,
-          updated_at: reservation.updated_at
+          updated_at: reservation.updated_at,
+          price: reservation.price
         }
     end
     render :index
@@ -89,7 +91,8 @@ class Api::ReservationsController < ApplicationController
           jet_id: reservation.jet.id,
           departure_time: reservation.departure_time,
           created_at: reservation.created_at,
-          updated_at: reservation.updated_at
+          updated_at: reservation.updated_at,
+          price: reservation.price
         }
     end
     render :index
@@ -113,7 +116,8 @@ class Api::ReservationsController < ApplicationController
           jet_id: reservation.jet.id,
           departure_time: reservation.departure_time,
           created_at: reservation.created_at,
-          updated_at: reservation.updated_at
+          updated_at: reservation.updated_at,
+          price: reservation.price
         }
     end
     render :index
