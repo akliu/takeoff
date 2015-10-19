@@ -131,7 +131,7 @@
               <br/>
               <input type="submit" value="Make Reservation"/>
           </form>
-          <JetImages jet={JetStore.findById(parseInt(this.state.jetId))} />
+          <JetImages jet={JetStore.findById(parseInt(this.state.jetId)).model} />
         </div>
       );
     }

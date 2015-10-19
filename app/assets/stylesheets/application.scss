@@ -99,10 +99,10 @@ img.jet {
     -o-transition: all 1s ease; /* Opera */
     transition: all .5s ease;
     // transform:scale(0.3);
-    width: 275px;
-    height: 250px;
-    object-fit: cover;
-    object-position: center;
+    width: 200px;
+    height: 150px;
+    // object-fit: cover;
+    // object-position: center;
     z-index: 0;
 }
 
@@ -111,8 +111,12 @@ img.jet:hover {
     -moz-transform:scale(1.1); /* Firefox */
     -ms-transform:scale(1.1); /* IE 9 */
     -o-transform:scale(1.1); /* Opera */
-     transform:scale(2);
-     z-index: 10;
+    //  transform:scale(2);
+    height: 300px;
+    width: 400px;
+    z-index: 10;
+    // object-fit: cover;
+    // object-position: center;
 }
 
 .jet-images {
@@ -124,5 +128,24 @@ img.jet:hover {
 .jet-images-item {
   display: inline-block;
   padding: 30px;
-  width: 25%;
+  width: 35%;
 }
+
+
+
+
+
+
+// img.jet {
+//     -webkit-transition: all 1s ease; /* Safari and Chrome */
+//     -moz-transition: all 1s ease; /* Firefox */
+//     -ms-transition: all 1s ease; /* IE 9 */
+//     -o-transition: all 1s ease; /* Opera */
+//     transition: all .5s ease;
+//     // transform:scale(0.3);
+//     width: 275px;
+//     height: 250px;
+//     object-fit: cover;
+//     object-position: center;
+//     z-index: 0;
+// }
