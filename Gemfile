@@ -52,7 +52,7 @@ end
 gem 'annotate'
 gem 'bcrypt'
 gem 'react-rails', '1.3.0'
-gem 'flux-rails-assets'
+gem 'flux-rails-assets', '1.0.1'
 gem 'bootstrap-sass'
 gem 'newrelic_rpm'
 gem 'rails_12factor', '0.0.2'
