@@ -97,8 +97,10 @@ img.jet {
     -moz-transition: all 1s ease; /* Firefox */
     -ms-transition: all 1s ease; /* IE 9 */
     -o-transition: all 1s ease; /* Opera */
-    transition: all 1s ease;
-    transform:scale(0.3);
+    transition: all .5s ease;
+    // transform:scale(0.3);
+    width: 100%;
+    z-index: 0;
 }
 
 img.jet:hover {
@@ -106,5 +108,22 @@ img.jet:hover {
     -moz-transform:scale(1.1); /* Firefox */
     -ms-transform:scale(1.1); /* IE 9 */
     -o-transform:scale(1.1); /* Opera */
-     transform:scale(1);
+     transform:scale(2);
+     z-index: 10;
+}
+
+img.jet:hover:after {
+  z-index: 5;
+}
+
+.jet-images {
+  margin: auto;
+  text-align: center;
+  width: 100%;
+}
+
+.jet-images-item {
+  display: inline-block;
+  padding: 15px;
+  width: 25%;
 }
