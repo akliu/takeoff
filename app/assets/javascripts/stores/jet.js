@@ -13,6 +13,16 @@
       return _jets.slice();
     },
 
+    atAirport: function(airportName){
+      var jetsAtAirport = [];
+      for(var i = 0; i < _jets.length; i++){
+        if(_jets[i].airport_name === airportName){
+          jetsAtAirport.push(_jets[i]);
+        }
+      }
+      return jetsAtAirport;
+    },
+
     atAirportById: function(airportId){
       var jetsAtAirport = [];
       for(var i = 0; i < _jets.length; i++){

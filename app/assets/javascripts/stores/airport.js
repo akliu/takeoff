@@ -22,6 +22,14 @@
       return _airportsInView.slice();
     },
 
+    allNames: function(){
+      var airportNames = [];
+      for(var i = 0; i < _airports.length; i++){
+        airportNames.push(_airports[i].name);
+      }
+      return airportNames;
+    },
+
     findByName: function(name){
       for(var i = 0; i < _airports.length; i++){
         if(_airports[i].name === name){

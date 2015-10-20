@@ -9,6 +9,7 @@ class Api::JetsController < ApplicationController
         owner_id: jet.owner_id,
         owner_name: jet.owner.username,
         airport_id: jet.airport_id,
+        airport_name: jet.airport.name,
         model: jet.model,
         capacity: jet.capacity
       }
@@ -26,6 +27,7 @@ class Api::JetsController < ApplicationController
         owner_id: jet.owner_id,
         owner_name: jet.owner.username,
         airport_id: jet.airport_id,
+        airport_name: jet.airport.name,
         model: jet.model,
         capacity: jet.capacity
       }
