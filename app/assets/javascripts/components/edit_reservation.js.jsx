@@ -11,24 +11,28 @@
       var reservation = ReservationStore.find(parseInt(this.props.location.query.id));
       return {
         origin: reservation.origin_name,
+        originId: reservation.origin_id,
         destination: reservation.destination_name,
         date: "",
         hour: 0,
         minute: "",
         ampm: "",
         jetId: reservation.jet_id,
-        availableJets: JetStore.all(),
+        // availableJets: JetStore.all(),
+        availableJets: JetStore.atAirportById(reservation.origin_id),
         price: reservation.price
       };
     },
 
     componentDidMount: function(){
       JetStore.addChangeListener(this._updateJets);
-      ApiUtil.fetchJets({origin: this.state.origin});
+      // ApiUtil.fetchJets({origin: this.state.origin});
+      ApiUtil.fetchJets();
     },
 
     _updateJets: function(){
-      this.setState({availableJets: JetStore.all()});
+      // this.setState({availableJets: JetStore.all()});
+      this.setState({availableJets: JetStore.atAirportById(this.state.originId)});
     },
 
     handleSubmit: function(event){
@@ -42,9 +46,13 @@
 
     handleOriginChange: function(event){
       event.preventDefault();
+      var airport = AirportStore.findByName(event.currentTarget.value);
       this.setState({origin: event.currentTarget.value,
+                      originId: airport.id,
                       jetId: -1});
-      ApiUtil.fetchJets({origin: event.currentTarget.value});
+
+      // ApiUtil.fetchJets({origin: event.currentTarget.value});
+      ApiUtil.fetchJets();
     },
 
     updatePrice: function(newPrice){

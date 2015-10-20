@@ -84,11 +84,10 @@ ApiUtil = {
     });
   },
 
-  fetchJets: function(filterParams){
+  fetchJets: function(){
     $.ajax({
       url: "api/jets",
       method: "GET",
-      data: filterParams,
       success: function(jets){
         ApiActions.receiveJets(jets);
       }

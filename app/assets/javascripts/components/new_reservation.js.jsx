@@ -8,7 +8,7 @@
     mixins: [React.addons.LinkedStateMixin],
 
     getInitialState: function(){
-
+      var airportId = parseInt(this.props.location.query.id);
       return {
         origin: this.props.location.query.name,
         destination: "",
@@ -17,18 +17,21 @@
         minute: "",
         ampm: "",
         jetId: -1,
-        availableJets: JetStore.all(),
+        availableJets: JetStore.atAirportById(airportId),
         price: ""
       };
     },
 
     componentDidMount: function(){
       JetStore.addChangeListener(this._updateJets);
-      ApiUtil.fetchJets({origin: this.state.origin});
+      // ApiUtil.fetchJets({origin: this.state.origin});
+      ApiUtil.fetchJets();
     },
 
     _updateJets: function(){
-      this.setState({availableJets: JetStore.all()});
+      // this.setState({availableJets: JetStore.all()});
+      var airportId = parseInt(this.props.location.query.id);
+      this.setState({availableJets: JetStore.atAirportById(airportId)});
     },
 
     handleSubmit: function(event){
@@ -43,7 +46,8 @@
       event.preventDefault();
       this.setState({origin: event.currentTarget.value,
                       jetId: -1});
-      ApiUtil.fetchJets({origin: event.currentTarget.value});
+      // ApiUtil.fetchJets({origin: event.currentTarget.value});
+      ApiUtil.fetchJets();
       this.updatePrice(event.currentTarget.value, this.state.destination);
     },
 
