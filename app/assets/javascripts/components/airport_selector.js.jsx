@@ -8,7 +8,7 @@
     if(typeof initialInput === "undefined"){
       initialInput = "";
     }
-    
+
       return { inputVal: initialInput};
     },
 
@@ -59,7 +59,7 @@
       }
 
       return (
-        <div>
+        <div className="airport-selector">
           <input onChange={this.handleInput} value={this.state.inputVal} />
           <ul>
             {results}

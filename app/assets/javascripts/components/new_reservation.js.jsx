@@ -83,15 +83,9 @@
             <AirportSelector airports={this.state.airportNames}
                           default={this.state.origin}
                           update={this.handleOriginChange}/>
-
-
-            <br/>
             <label>To: </label>
             <AirportSelector airports={this.state.airportNames}
                           update={this.handleDestinationChange}/>
-
-
-            <br/>
             <label>Date: </label>
             <input type="date" valueLink={this.linkState("date")} id="date"></input>
             <br/>
@@ -153,7 +147,6 @@
                   destination={this.state.destination}
                   updateForm={this.updatePrice}
                   price={this.state.price} />
-
           <JetImages jet={JetStore.findById(parseInt(this.state.jetId)).model} />
         </div>
       );

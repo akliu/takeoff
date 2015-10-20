@@ -132,9 +132,27 @@ img.jet:hover {
 }
 
 
+.airport-selector input {
+  width: 30%;
+}
 
+.airport-selector li{
+  display: block;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  width: 30%;
+  border-radius: 5px;
+}
 
+.airport-selector li:hover{
+  background: rgba(16, 107, 185, 0.34);
+  cursor: pointer;
+}
 
+.airport-selector li:last-child{
+  border-bottom: 1px solid black;
+}
 
 // img.jet {
 //     -webkit-transition: all 1s ease; /* Safari and Chrome */
