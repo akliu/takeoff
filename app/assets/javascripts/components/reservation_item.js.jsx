@@ -4,6 +4,23 @@
   window.ReservationItem = React.createClass({
     mixins: [ReactRouter.History],
 
+    getInitialState: function(){
+      return({aircraftOwner: ""});
+    },
+
+    componentDidMount: function(){
+      JetStore.addChangeListener(this._updateOwner);
+      ApiUtil.fetchJets({origin: this.props.reservation.origin_name});
+    },
+
+    _updateOwner: function(){
+      var jetOwner = JetStore.findById(this.props.reservation.jet_id).owner_name;
+      if(typeof jetOwner !== "undefined"){
+        jetOwner = jetOwner.charAt(0).toUpperCase() + jetOwner.slice(1);
+        this.setState({aircraftOwner: jetOwner});
+      }
+    },
+
     _handleDelete: function(event){
       event.preventDefault();
       ApiUtil.deleteReservation(this.props.reservation.id);
@@ -26,7 +43,9 @@
       var destinationName = this.props.reservation.destination_name;
       var destinationCode = this.props.reservation.destination_code;
 
-      var aircraft = this.props.reservation.jet;
+      var aircraftModel = this.props.reservation.jet;
+
+      var aircraft = this.state.aircraftOwner + "'s " + aircraftModel;
 
       var price = this.props.reservation.price;
 
@@ -50,7 +69,7 @@
             <li>Aircraft: {aircraft}</li>
             <li>Total Fare: {price}</li>
             {editable}
-            <JetImages jet={aircraft} />
+            <JetImages jet={aircraftModel} />
           </ul>
         </div>
       );

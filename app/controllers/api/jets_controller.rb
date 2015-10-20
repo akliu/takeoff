@@ -22,7 +22,7 @@ class Api::JetsController < ApplicationController
     @jets = @jets.map do |jet|
       {id: jet.id,
         owner_id: jet.owner_id,
-        owner_name: jet.owner.name,
+        owner_name: jet.owner.username,
         airport_id: jet.airport_id,
         model: jet.model,
         capacity: jet.capacity
