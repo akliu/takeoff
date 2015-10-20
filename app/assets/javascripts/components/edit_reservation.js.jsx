@@ -127,9 +127,14 @@
                 <option></option>
                 {
                   this.state.availableJets.map(function(jet){
+                    var ownerName;
+                    {
+                    ownerName = jet.owner_name.charAt(0).toUpperCase() +
+                                jet.owner_name.slice(1);
+                    }
                     return (
                       <option value={jet.id} key={jet.id}>
-                        {jet.model}
+                        {ownerName + "'s " + jet.model}
                       </option>
                     );
                   })
