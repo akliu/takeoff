@@ -70,8 +70,8 @@
             <li>Aircraft: {aircraft}</li>
             <li>Total Fare: ${price.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')}</li>
             {editable}
-            <JetImages jet={aircraftModel} />
           </ul>
+            <JetImages jet={aircraftModel} />
         </div>
       );
     }
