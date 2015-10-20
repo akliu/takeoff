@@ -136,22 +136,41 @@ img.jet:hover {
   width: 30%;
 }
 
+.airport-selector ul{
+  position: absolute;
+  width: 50%;
+  left: -25px;
+}
+
 .airport-selector li{
   display: block;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-top: 1px solid black;
-  width: 30%;
-  border-radius: 5px;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  width: 100%;
+  background: white;
 }
 
 .airport-selector li:hover{
-  background: rgba(16, 107, 185, 0.34);
+  // background: rgba(16, 107, 185, 0.34);
+  border: 3px solid lightblue;
   cursor: pointer;
 }
 
+.airport-selector li:first-child:hover{
+  border: 3px solid lightblue;
+}
+
+.airport-selector li:last-child:hover{
+  border: 3px solid lightblue;
+}
+
+
+.airport-selector li:first-child{
+  border-top: 1px solid gray;
+}
+
 .airport-selector li:last-child{
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid gray;
 }
 
 // img.jet {

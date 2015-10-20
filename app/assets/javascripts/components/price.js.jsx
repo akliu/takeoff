@@ -45,9 +45,18 @@
 
     render: function(){
       // var price = this.calculatePrice();
+      var formattedPrice = this.props.price;
+      if(formattedPrice !== ""){
+        if(typeof formattedPrice === "string"){
+          formattedPrice = "$" + formattedPrice.replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+        } else {
+          formattedPrice = "$" + formattedPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+        }
+      }
+
       return (
         <div>
-          Total Fare: {this.props.price}
+          Total Fare: {formattedPrice}
         </div>
       );
     }

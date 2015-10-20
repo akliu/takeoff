@@ -20,6 +20,7 @@
         jetId: reservation.jet_id,
         // availableJets: JetStore.all(),
         availableJets: JetStore.atAirportById(reservation.origin_id),
+        airportNames: AirportStore.allNames(),
         price: reservation.price
       };
     },
@@ -44,15 +45,30 @@
       this.props.history.pushState(null, "reservations/index");
     },
 
-    handleOriginChange: function(event){
-      event.preventDefault();
-      var airport = AirportStore.findByName(event.currentTarget.value);
-      this.setState({origin: event.currentTarget.value,
+    // handleOriginChange: function(event){
+    //   event.preventDefault();
+    //   var airport = AirportStore.findByName(event.currentTarget.value);
+    //   this.setState({origin: event.currentTarget.value,
+    //                   originId: airport.id,
+    //                   jetId: -1});
+    //
+    //   // ApiUtil.fetchJets({origin: event.currentTarget.value});
+    //   ApiUtil.fetchJets();
+    // },
+
+    handleOriginChange: function(value){
+      var airport = AirportStore.findByName(value);
+      this.setState({origin: value,
                       originId: airport.id,
                       jetId: -1});
-
       // ApiUtil.fetchJets({origin: event.currentTarget.value});
       ApiUtil.fetchJets();
+      this.updatePrice(value, this.state.destination);
+    },
+
+    handleDestinationChange: function(value){
+      this.setState({destination: value});
+      this.updatePrice(this.state.origin, value);
     },
 
     updatePrice: function(newPrice){
@@ -66,34 +82,20 @@
           <h2>Change Reservation</h2>
           <form onSubmit={this.handleSubmit}>
             <label>From: </label>
-            <select onChange={this.handleOriginChange} value={this.state.origin}
-                    id="origin">
-              <option></option>
-              {
-                AirportStore.all().map(function(airport){
-                  return (
-                    <option value={airport.name} key={airport.id}>
-                      {airport.name} - {airport.code}
-                    </option>
-                  );
-                }.bind(this))
-              }
-            </select>
-            <br/>
+            <AirportSelector airports={this.state.airportNames}
+                          default={this.state.origin}
+                          update={this.handleOriginChange}/>
+
+
+
             <label>To: </label>
-            <select valueLink={this.linkState("destination")} id="destination">
-              <option></option>
-              {
-                AirportStore.all().map(function(airport){
-                  return (
-                    <option value={airport.name} key={airport.id} >
-                      {airport.name} - {airport.code}
-                    </option>
-                  );
-                })
-              }
-            </select>
-            <br/>
+            <AirportSelector airports={this.state.airportNames}
+                          default={this.state.destination}
+                          update={this.handleDestinationChange}/>
+
+
+
+
             <label>Date: </label>
             <input type="date" valueLink={this.linkState("date")} id="date"></input>
             <br/>
@@ -163,3 +165,36 @@
   });
 
 }(this));
+
+
+
+
+// <select onChange={this.handleOriginChange} value={this.state.origin}
+//         id="origin">
+//   <option></option>
+//   {
+//     AirportStore.all().map(function(airport){
+//       return (
+//         <option value={airport.name} key={airport.id}>
+//           {airport.name} - {airport.code}
+//         </option>
+//       );
+//     }.bind(this))
+//   }
+// </select>
+
+
+
+
+// <select valueLink={this.linkState("destination")} id="destination">
+//   <option></option>
+//   {
+//     AirportStore.all().map(function(airport){
+//       return (
+//         <option value={airport.name} key={airport.id} >
+//           {airport.name} - {airport.code}
+//         </option>
+//       );
+//     })
+//   }
+// </select>

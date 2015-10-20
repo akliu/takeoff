@@ -68,7 +68,7 @@
             <li>To: {destinationName} ({destinationCode})</li>
             <li>Departure Time: {itemDate}</li>
             <li>Aircraft: {aircraft}</li>
-            <li>Total Fare: {price}</li>
+            <li>Total Fare: ${price.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')}</li>
             {editable}
             <JetImages jet={aircraftModel} />
           </ul>
