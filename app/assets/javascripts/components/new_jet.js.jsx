@@ -30,7 +30,7 @@
           <h2>Register my Jet</h2>
           <form onSubmit={this.handleSubmit}>
             <label>Jet Model: </label>
-            <select onChange={this.handleJetSelection} value={this.state.jet}>
+            <select className="form-control aircraft-selector" onChange={this.handleJetSelection} value={this.state.jet}>
               <option></option>
               {
                 jets.map(function(jet){
@@ -44,7 +44,7 @@
             </select>
             <br/>
             <label>Home Airport: </label>
-              <select valueLink={this.linkState("airport")} >
+              <select className="form-control aircraft-selector" valueLink={this.linkState("airport")} >
                 <option></option>
                 {
                   AirportStore.all().map(function(airport){
@@ -57,7 +57,7 @@
                 }
               </select>
               <br/>
-              <input type="submit" value="Register"/>
+              <button type="submit" className="btn btn-default">Register</button>
           </form>
           <br/>
           <JetImages jet={this.state.jet} />

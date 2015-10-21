@@ -96,9 +96,10 @@
 
 
             <label>Date: </label>
-            <input type="date" valueLink={this.linkState("date")} id="date"></input>
+            <input type="date" className="form-control date-input" valueLink={this.linkState("date")} id="date"></input>
             <br/>
             <label>Departure Time: </label>
+            <br/>
               <select valueLink={this.linkState("hour")} id="hour">
                 <option></option>
                 {
@@ -132,7 +133,7 @@
               </select>
               <br/>
               <label>Aircraft: </label>
-              <select valueLink={this.linkState("jetId")} id="jet">
+              <select className="form-control aircraft-selector" valueLink={this.linkState("jetId")} id="jet">
                 <option></option>
                 {
                   this.state.availableJets.map(function(jet){
@@ -150,13 +151,14 @@
                 }
               </select>
               <br/>
-              <input type="submit" value="Update Reservation"/>
+              <button type="submit" className="btn btn-default">Update Reservation</button>
           </form>
           <Price origin={this.state.origin}
                   destination={this.state.destination}
                   updateForm={this.updatePrice}
                   price={this.state.price} />
           <JetImages jet={JetStore.findById(parseInt(this.state.jetId)).model} />
+          <br/>
         </div>
       );
     }

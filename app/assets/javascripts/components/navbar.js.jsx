@@ -21,7 +21,7 @@
 
             <div className="collapse navbar-collapse" id="collapse-menu">
               <ul className="nav navbar-nav pull-left">
-                <li><h3>Takeoff</h3></li>
+                <li><h2>Takeoff</h2></li>
               </ul>
               <ul className="nav navbar-nav pull-right">
                 <li><a href="#" onClick={ApiUtil.logOut}>Sign Out</a></li>
