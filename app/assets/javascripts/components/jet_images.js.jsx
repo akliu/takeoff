@@ -33,7 +33,7 @@
           jetImages.map(function(url){
             return (
               <div className="jet-images-item">
-                <img src={url} className="jet" key={jetImages.indexOf(url)} />
+                <img src={url} className="img-thumbnail jet" key={jetImages.indexOf(url)} />
               </div>
             );
           }.bind(this))
