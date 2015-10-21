@@ -9,7 +9,9 @@
     componentWillReceiveProps: function(newProps){
       this.setState({errors: []});
       var newErrors = [];
-      if(newProps.inputs.origin === newProps.inputs.destination){
+      if(newProps.inputs.origin === newProps.inputs.destination  &&
+            newProps.inputs.origin !== "" &&
+            newProps.inputs.destination !== ""){
         newErrors.push("Destination cannot be the same as origin");
       }
       if(newProps.inputs.date !== ""){
