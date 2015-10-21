@@ -58,17 +58,22 @@
 
     handleOriginChange: function(value){
       var airport = AirportStore.findByName(value);
+      // this.setState({origin: value,
+      //                 originId: airport.id,
+      //                 jetId: -1});
       this.setState({origin: value,
                       originId: airport.id,
-                      jetId: -1});
+                      jetId: -1,
+                      availableJets: JetStore.atAirport(value)});
       // ApiUtil.fetchJets({origin: event.currentTarget.value});
-      ApiUtil.fetchJets();
-      this.updatePrice(value, this.state.destination);
+      // ApiUtil.fetchJets();
+
+      // this.updatePrice(value, this.state.destination);
     },
 
     handleDestinationChange: function(value){
       this.setState({destination: value});
-      this.updatePrice(this.state.origin, value);
+      // this.updatePrice(this.state.origin, value);
     },
 
     updatePrice: function(newPrice){

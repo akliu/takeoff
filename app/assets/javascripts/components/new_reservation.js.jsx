@@ -59,9 +59,10 @@
 
     handleOriginChange: function(value){
       this.setState({origin: value,
-                      jetId: -1});
+                      jetId: -1,
+                      availableJets: JetStore.atAirport(value)});
       // ApiUtil.fetchJets({origin: event.currentTarget.value});
-      ApiUtil.fetchJets();
+      // ApiUtil.fetchJets();
       // this.updatePrice(value, this.state.destination);
     },
 
@@ -73,7 +74,6 @@
     handleDateChange: function(event){
       event.preventDefault();
       this.setState({date: event.currentTarget.value});
-      debugger
     },
 
     updatePrice: function(newPrice){
@@ -81,7 +81,6 @@
     },
 
     render: function(){
-        debugger
       return (
         <div className="reservation-list modal-content">
           <ValidateInput inputs={this.state} />
