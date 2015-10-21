@@ -3,10 +3,10 @@ class Api::ReservationsController < ApplicationController
 
     if (params[:time] == "future")
       @reservations = Reservation.where("user_id = ? AND departure_time >= ?",
-                          current_user.id, DateTime.now).order(:departure_time)
+                          current_user.id, DateTime.now).order(:departure_time).includes(:origin, :destination, :user, :jet)
     else
       @reservations = Reservation.where("user_id = ? AND departure_time < ?",
-                  current_user.id, DateTime.now).order("departure_time DESC")
+                1, DateTime.now).order("departure_time DESC").includes(:origin, :destination, :user, :jet)
     end
 
     @reservations = prepare_for_json(@reservations)
@@ -29,7 +29,7 @@ class Api::ReservationsController < ApplicationController
 
 
     @reservations = @reservations = Reservation.where("user_id = ? AND departure_time >= ?",
-                        current_user.id, DateTime.now).order(:departure_time)
+                        current_user.id, DateTime.now).order(:departure_time).includes(:origin, :destination, :user, :jet)
 
     @reservations = prepare_for_json(@reservations)
     render :index
@@ -52,7 +52,7 @@ class Api::ReservationsController < ApplicationController
             departure_time: departure_time)
 
     @reservations = @reservations = Reservation.where("user_id = ? AND departure_time >= ?",
-                        current_user.id, DateTime.now).order(:departure_time)
+                        current_user.id, DateTime.now).order(:departure_time).includes(:origin, :destination, :user, :jet)
 
     @reservations = prepare_for_json(@reservations)
     render :index
@@ -64,7 +64,7 @@ class Api::ReservationsController < ApplicationController
     @reservation.destroy!
 
     @reservations = @reservations = Reservation.where("user_id = ? AND departure_time >= ?",
-                        current_user.id, DateTime.now).order(:departure_time)
+                        current_user.id, DateTime.now).order(:departure_time).includes(:origin, :destination, :user, :jet)
 
     @reservations = prepare_for_json(@reservations)
     render :index

@@ -12,6 +12,7 @@
 
   window.Map = React.createClass({
     getInitialState: function(){
+        debugger
         return({airports: AirportStore.inView()});
     },
 
