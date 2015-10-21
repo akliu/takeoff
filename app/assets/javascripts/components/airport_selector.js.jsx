@@ -60,7 +60,8 @@
 
       return (
         <div className="airport-selector">
-          <input onChange={this.handleInput} value={this.state.inputVal} />
+          <label>{this.props.type}</label>
+          <input className="form-control" onChange={this.handleInput} value={this.state.inputVal} />
           <ul>
             {results}
           </ul>

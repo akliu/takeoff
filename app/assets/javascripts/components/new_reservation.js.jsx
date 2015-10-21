@@ -79,17 +79,17 @@
         <div className="reservation-list modal-content">
           <h2>New Reservation</h2>
           <form onSubmit={this.handleSubmit}>
-            <label>From: </label>
             <AirportSelector airports={this.state.airportNames}
                           default={this.state.origin}
-                          update={this.handleOriginChange}/>
-            <label>To: </label>
+                          update={this.handleOriginChange}
+                          type="From:"/>
             <AirportSelector airports={this.state.airportNames}
-                          update={this.handleDestinationChange}/>
+                          update={this.handleDestinationChange}
+                          type="To:"/>
             <label>Date: </label>
-            <input type="date" valueLink={this.linkState("date")} id="date"></input>
-            <br/>
+            <input type="date" className="form-control date-input" valueLink={this.linkState("date")} id="date"></input>
             <label>Departure Time: </label>
+            <br/>
               <select valueLink={this.linkState("hour")} id="hour">
                 <option></option>
                 {
@@ -123,7 +123,7 @@
               </select>
               <br/>
               <label>Aircraft: </label>
-              <select valueLink={this.linkState("jetId")} id="jet">
+              <select className="form-control aircraft-selector" valueLink={this.linkState("jetId")} id="jet">
                 <option></option>
                 {
                   this.state.availableJets.map(function(jet){
@@ -141,8 +141,9 @@
                 }
               </select>
               <br/>
-              <input type="submit" value="Make Reservation"/>
+              <button type="submit" className="btn btn-default">Make Reservation</button>
           </form>
+          <br/>
           <Price origin={this.state.origin}
                   destination={this.state.destination}
                   updateForm={this.updatePrice}

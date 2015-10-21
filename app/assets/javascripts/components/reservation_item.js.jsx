@@ -71,7 +71,8 @@
             <li>Total Fare: ${price.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')}</li>
             {editable}
           </ul>
-            <JetImages jet={aircraftModel} />
+          <JetImages jet={aircraftModel} />
+          <br/>
         </div>
       );
     }

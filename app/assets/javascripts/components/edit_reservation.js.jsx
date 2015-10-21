@@ -81,17 +81,16 @@
         <div className="reservation-list modal-content">
           <h2>Change Reservation</h2>
           <form onSubmit={this.handleSubmit}>
-            <label>From: </label>
             <AirportSelector airports={this.state.airportNames}
                           default={this.state.origin}
-                          update={this.handleOriginChange}/>
+                          update={this.handleOriginChange}
+                          type="From:"/>
 
 
-
-            <label>To: </label>
             <AirportSelector airports={this.state.airportNames}
                           default={this.state.destination}
-                          update={this.handleDestinationChange}/>
+                          update={this.handleDestinationChange}
+                          type="To:"/>
 
 
 

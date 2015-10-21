@@ -55,7 +55,7 @@
       }
 
       return (
-        <div>
+        <div className="price">
           Total Fare: {formattedPrice}
         </div>
       );
