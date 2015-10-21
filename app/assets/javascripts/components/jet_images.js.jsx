@@ -32,7 +32,7 @@
         imageTags = (
           jetImages.map(function(url){
             return (
-              <div className="jet-images-item">
+              <div className="jet-images-item" key={jetImages.indexOf(url)}>
                 <img src={url} className="img-thumbnail jet" key={jetImages.indexOf(url)} />
               </div>
             );

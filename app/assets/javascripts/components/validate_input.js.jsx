@@ -28,7 +28,7 @@
           <ul>
             {
               this.state.errors.map(function(error){
-                return(<li>{error}</li>);
+                return(<li key={this.state.errors.indexOf(error)}>{error}</li>);
               }.bind(this))
             }
           </ul>

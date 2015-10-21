@@ -48,7 +48,7 @@
       var results = [];
       if(this.state.inputVal.length >= 1){
         results = matches.map(function(result){
-          return <li onClick={this.selectName}>{result}</li>;
+          return <li onClick={this.selectName} key={matches.indexOf(result)}>{result}</li>;
         }.bind(this));
       }
 
