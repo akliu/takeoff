@@ -62,18 +62,18 @@
                       jetId: -1});
       // ApiUtil.fetchJets({origin: event.currentTarget.value});
       ApiUtil.fetchJets();
-      this.updatePrice(value, this.state.destination);
+      // this.updatePrice(value, this.state.destination);
     },
 
     handleDestinationChange: function(value){
       this.setState({destination: value});
-      this.updatePrice(this.state.origin, value);
+      // this.updatePrice(this.state.origin, value);
     },
 
     handleDateChange: function(event){
       event.preventDefault();
       this.setState({date: event.currentTarget.value});
-      this.forceUpdate();
+      debugger
     },
 
     updatePrice: function(newPrice){
@@ -81,6 +81,7 @@
     },
 
     render: function(){
+        debugger
       return (
         <div className="reservation-list modal-content">
           <ValidateInput inputs={this.state} />

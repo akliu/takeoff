@@ -6,15 +6,15 @@
       return({errors: []});
     },
 
-    componentWillReceiveProps: function(){
+    componentWillReceiveProps: function(newProps){
       this.setState({errors: []});
       var newErrors = [];
-      if(this.props.inputs.origin === this.props.inputs.destination){
+      if(newProps.inputs.origin === newProps.inputs.destination){
         newErrors.push("Destination cannot be the same as origin");
       }
-      if(this.props.inputs.date !== ""){
-        if(new Date(this.props.inputs.date) < new Date()){
-          newErrors.push("Departure time must be in the future");
+      if(newProps.inputs.date !== ""){
+        if(new Date(newProps.inputs.date) < new Date()){
+          newErrors.push("Departure date must be in the future");
         }
       }
       this.setState({errors: newErrors});
