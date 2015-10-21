@@ -5,21 +5,23 @@
     mixins: [ReactRouter.History],
 
     getInitialState: function(){
-      return({aircraftOwner: ""});
+      var jetOwner = JetStore.findById(this.props.reservation.jet_id).owner_name;
+      if(typeof JetOwner !== 'undefined'){
+        jetOwner = jetOwner.charAt(0).toUpperCase() + jetOwner.slice(1);
+      } else {
+        jetOwner = "";
+      }
+      return({aircraftOwner: jetOwner});
     },
 
     componentDidMount: function(){
       JetStore.addChangeListener(this._updateOwner);
-      // ApiUtil.fetchJets({origin: this.props.reservation.origin_name});
-      ApiUtil.fetchJets();
     },
 
     _updateOwner: function(){
       var jetOwner = JetStore.findById(this.props.reservation.jet_id).owner_name;
-      // if(typeof jetOwner !== "undefined"){
-        jetOwner = jetOwner.charAt(0).toUpperCase() + jetOwner.slice(1);
-        this.setState({aircraftOwner: jetOwner});
-      // }
+      jetOwner = jetOwner.charAt(0).toUpperCase() + jetOwner.slice(1);
+      this.setState({aircraftOwner: jetOwner});
     },
 
     _handleDelete: function(event){

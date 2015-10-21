@@ -9,6 +9,7 @@
     componentDidMount: function(){
       ReservationStore.addChangeListener(this._updateReservations);
       ApiUtil.fetchPastReservations();
+      ApiUtil.fetchJets();
     },
 
     _updateReservations: function(){
