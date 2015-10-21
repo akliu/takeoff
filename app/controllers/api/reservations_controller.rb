@@ -3,29 +3,13 @@ class Api::ReservationsController < ApplicationController
 
     if (params[:time] == "future")
       @reservations = Reservation.where("user_id = ? AND departure_time >= ?",
-                                                current_user.id, DateTime.now)
+                          current_user.id, DateTime.now).order(:departure_time)
     else
       @reservations = Reservation.where("user_id = ? AND departure_time < ?",
-                                                current_user.id, DateTime.now)
+                  current_user.id, DateTime.now).order("departure_time DESC")
     end
 
-    @reservations = @reservations.map do |reservation|
-        {id: reservation.id,
-          user_id: reservation.user_id,
-          origin_name: reservation.origin.name,
-          origin_code: reservation.origin.code,
-          origin_id: reservation.origin.id,
-          destination_name: reservation.destination.name,
-          destination_code: reservation.destination.code,
-          destination_id: reservation.destination.id,
-          jet: reservation.jet.model,
-          jet_id: reservation.jet.id,
-          departure_time: reservation.departure_time,
-          created_at: reservation.created_at,
-          updated_at: reservation.updated_at,
-          price: reservation.price
-        }
-    end
+    @reservations = prepare_for_json(@reservations)
   end
 
   def create
@@ -44,25 +28,10 @@ class Api::ReservationsController < ApplicationController
             departure_time: departure_time, price: price)
 
 
-    @reservations = Reservation.where("user_id = ?", current_user.id)
+    @reservations = @reservations = Reservation.where("user_id = ? AND departure_time >= ?",
+                        current_user.id, DateTime.now).order(:departure_time)
 
-    @reservations = @reservations.map do |reservation|
-        {id: reservation.id,
-          user_id: reservation.user_id,
-          origin_name: reservation.origin.name,
-          origin_code: reservation.origin.code,
-          origin_id: reservation.origin.id,
-          destination_name: reservation.destination.name,
-          destination_code: reservation.destination.code,
-          destination_id: reservation.destination.id,
-          jet: reservation.jet.model,
-          jet_id: reservation.jet.id,
-          departure_time: reservation.departure_time,
-          created_at: reservation.created_at,
-          updated_at: reservation.updated_at,
-          price: reservation.price
-        }
-    end
+    @reservations = prepare_for_json(@reservations)
     render :index
   end
 
@@ -82,25 +51,10 @@ class Api::ReservationsController < ApplicationController
             destination_id: destination_id, jet_id: jet_id,
             departure_time: departure_time)
 
-    @reservations = Reservation.where("user_id = ?", current_user.id)
+    @reservations = @reservations = Reservation.where("user_id = ? AND departure_time >= ?",
+                        current_user.id, DateTime.now).order(:departure_time)
 
-    @reservations = @reservations.map do |reservation|
-        {id: reservation.id,
-          user_id: reservation.user_id,
-          origin_name: reservation.origin.name,
-          origin_code: reservation.origin.code,
-          origin_id: reservation.origin.id,
-          destination_name: reservation.destination.name,
-          destination_code: reservation.destination.code,
-          destination_id: reservation.destination.id,
-          jet: reservation.jet.model,
-          jet_id: reservation.jet.id,
-          departure_time: reservation.departure_time,
-          created_at: reservation.created_at,
-          updated_at: reservation.updated_at,
-          price: reservation.price
-        }
-    end
+    @reservations = prepare_for_json(@reservations)
     render :index
 
   end
@@ -109,25 +63,33 @@ class Api::ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @reservation.destroy!
 
-    @reservations = Reservation.where("user_id = ?", current_user.id)
+    @reservations = @reservations = Reservation.where("user_id = ? AND departure_time >= ?",
+                        current_user.id, DateTime.now).order(:departure_time)
 
-    @reservations = @reservations.map do |reservation|
-        {id: reservation.id,
-          user_id: reservation.user_id,
-          origin_name: reservation.origin.name,
-          origin_code: reservation.origin.code,
-          origin_id: reservation.origin.id,
-          destination_name: reservation.destination.name,
-          destination_code: reservation.destination.code,
-          destination_id: reservation.destination.id,
-          jet: reservation.jet.model,
-          jet_id: reservation.jet.id,
-          departure_time: reservation.departure_time,
-          created_at: reservation.created_at,
-          updated_at: reservation.updated_at,
-          price: reservation.price
-        }
-    end
+    @reservations = prepare_for_json(@reservations)
     render :index
+  end
+
+  private
+
+  def prepare_for_json(reservations)
+    json_reservations = reservations.map do |reservation|
+      {id: reservation.id,
+        user_id: reservation.user_id,
+        origin_name: reservation.origin.name,
+        origin_code: reservation.origin.code,
+        origin_id: reservation.origin.id,
+        destination_name: reservation.destination.name,
+        destination_code: reservation.destination.code,
+        destination_id: reservation.destination.id,
+        jet: reservation.jet.model,
+        jet_id: reservation.jet.id,
+        departure_time: reservation.departure_time,
+        created_at: reservation.created_at,
+        updated_at: reservation.updated_at,
+        price: reservation.price
+      }
+    end
+    json_reservations
   end
 end

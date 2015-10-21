@@ -126,8 +126,12 @@ img.jet:hover {
     -moz-transform:scale(3.7); /* Firefox */
     -ms-transform:scale(3.7); /* IE 9 */
     -o-transform:scale(3.7); /* Opera */
-     transform:scale(3.7);
-     transform-origin: 50% 90px 0;
+   transform:scale(3.7);
+   -webkit-transform-origin: 50% 90px 0;
+   -moz-transform-origin: 50% 90px 0;
+   -ms-transform-origin: 50% 90px 0;
+   -o-transform-origin: 50% 90px 0;
+   transform-origin: 50% 90px 0;
     // height: 300px;
     // width: 400px;
     z-index: 10;
