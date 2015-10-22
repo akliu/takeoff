@@ -20,7 +20,8 @@
         jetId: reservation.jet_id,
         availableJets: JetStore.atAirportById(reservation.origin_id),
         airportNames: AirportStore.allNames(),
-        price: reservation.price
+        price: reservation.price,
+        errors: []
       };
     },
 
@@ -37,11 +38,13 @@
 
     handleSubmit: function(event){
       event.preventDefault();
-      var timezoneAndId = {id: this.props.location.query.id,
-                            timezone: -(new Date().getTimezoneOffset() / 60)};
-      var params = $.extend({}, this.state, timezoneAndId);
-      ApiUtil.editReservation(params);
-      this.props.history.pushState(null, "reservations/index");
+      if(this.validate()){
+        var timezoneAndId = {id: this.props.location.query.id,
+                              timezone: -(new Date().getTimezoneOffset() / 60)};
+        var params = $.extend({}, this.state, timezoneAndId);
+        ApiUtil.editReservation(params);
+        this.props.history.pushState(null, "reservations/index");
+      }
     },
 
     // handleOriginChange: function(event){
@@ -62,7 +65,7 @@
       //                 jetId: -1});
       this.setState({origin: value,
                       originId: airport.id,
-                      jetId: -1,
+                      jetId: "",
                       availableJets: JetStore.atAirport(value)});
       // ApiUtil.fetchJets({origin: event.currentTarget.value});
       // ApiUtil.fetchJets();
@@ -84,10 +87,76 @@
       this.setState({price: newPrice});
     },
 
+    validate: function(){
+      var errorsFound = [];
+      var originFound = false;
+      var destinationFound = false;
+
+      var year = moment(this.state.date).format('YYYY');
+      var month = Number(moment(this.state.date).format('M')) - 1;
+      var day = moment(this.state.date).format('D');
+      var hour = Number(this.state.hour);
+      var minute = this.state.minute;
+      if(typeof hour !== 'undefined'){
+        if(this.state.ampm === 'pm'){
+          hour = hour + 12;
+        }
+      }
+      var reservationTime = new Date(year, month, day, hour, minute);
+
+      if(this.state.origin === this.state.destination &&
+            this.state.origin !== "" &&
+            this.state.destination !== ""){
+        errorsFound.push("Destination cannot be the same as origin");
+      }
+      if(reservationTime < new Date()){
+        errorsFound.push("Departure date must be in the future");
+      }
+      if(this.state.origin === ""){
+        errorsFound.push("Origin missing");
+      }
+      if(this.state.destination === ""){
+        errorsFound.push("Destination missing");
+      }
+      if(this.state.date === ""){
+        errorsFound.push("Date missing");
+      }
+      if(this.state.hour === "" || this.state.minute === "" ||
+          this.state.ampm === ""){
+        errorsFound.push("Departure time missing");
+      }
+      if(this.state.jetId === ""){
+        errorsFound.push("Aircraft missing");
+      }
+
+      for(var i = 0; i < this.state.airportNames.length; i++){
+        if(this.state.airportNames[i] === this.state.origin){
+          originFound = true;
+        }
+        if(this.state.airportNames[i] === this.state.destination){
+          destinationFound = true;
+        }
+      }
+      if(!originFound){
+        errorsFound.push("Unknown origin airport");
+      }
+      if(!destinationFound){
+        errorsFound.push("Unknown destination airport");
+      }
+      console.log(errorsFound);
+      if(errorsFound.length === 0){
+        return true;
+      }else{
+        this.setState({errors: errorsFound});
+        return false;
+      }
+    },
+
     render: function(){
 
       return (
         <div className="reservation-list modal-content">
+          <ValidateInput inputs={this.state} />
           <h2>Change Reservation</h2>
           <form onSubmit={this.handleSubmit}>
             <AirportSelector airports={this.state.airportNames}

@@ -55,12 +55,25 @@
       var errorsFound = [];
       var originFound = false;
       var destinationFound = false;
+
+      var year = moment(this.state.date).format('YYYY');
+      var month = Number(moment(this.state.date).format('M')) - 1;
+      var day = moment(this.state.date).format('D');
+      var hour = Number(this.state.hour);
+      var minute = this.state.minute;
+      if(typeof hour !== 'undefined'){
+        if(this.state.ampm === 'pm'){
+          hour = hour + 12;
+        }
+      }
+      var reservationTime = new Date(year, month, day, hour, minute);
+
       if(this.state.origin === this.state.destination &&
             this.state.origin !== "" &&
             this.state.destination !== ""){
         errorsFound.push("Destination cannot be the same as origin");
       }
-      if(new Date(this.state.date) < new Date()){
+      if(reservationTime < new Date()){
         errorsFound.push("Departure date must be in the future");
       }
       if(this.state.origin === ""){
