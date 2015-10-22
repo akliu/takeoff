@@ -32,6 +32,13 @@
         this.map = new google.maps.Map(map, mapOptions);
         this.registerListeners();
         ApiUtil.fetchAllAirports();
+        var marker = new google.maps.Marker({
+          // icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+          icon: "http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png",
+          position: userLocation,
+          map: this.map,
+          animation: google.maps.Animation.DROP
+        });
       }.bind(this));
         FilterParamsStore.addMapChangeListener(this._filtersChanged);
         this.markers = [];
@@ -72,9 +79,12 @@
       var that = this;
       var pos = new google.maps.LatLng(airport.lat, airport.lng);
       var marker = new google.maps.Marker({
+        // icon: "http://maps.google.com/mapfiles/kml/shapes/airports.png",
+        icon: "http://maps.google.com/mapfiles/kml/pal2/icon56.png",
         position: pos,
         map: this.map,
-        airportId: airport.id
+        airportId: airport.id,
+        animation: google.maps.Animation.DROP
       });
       marker.addListener('click', function(){
         that.onMarkerClick(airport);
