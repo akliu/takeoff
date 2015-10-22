@@ -12,7 +12,12 @@
 
   window.Map = React.createClass({
     getInitialState: function(){
-        return({airports: AirportStore.inView()});
+        return(
+          {
+            airports: AirportStore.inView(),
+            renderIntro: false
+          }
+      );
     },
 
     componentDidMount: function(){
@@ -22,6 +27,7 @@
 
       this.mapCenter(function(userLocation){
         //default to SF if geolocation fails
+        this.setState({renderIntro: true});
         if(JSON.stringify(userLocation) === "{}"){
           userLocation = {lat: 37.7758, lng: -122.435};
         }
@@ -142,12 +148,8 @@
     render: function(){
       return (
         <div className="map-container">
-          <div className="intro modal-content">
-            <h4>
-            Welcome to takeoff! Select an airport to start a new reservation
-          </h4>
-          </div>
-          <div className="map" ref="map">Finding airports near you...</div>
+          <IntroMessage render={this.state.renderIntro} />
+          <div className="map" ref="map"></div>
         </div>
       );
     }
