@@ -20,7 +20,9 @@
 
 
 body {
-  background-image: url(asset_path("test.jpg"));
+  background-image: url(asset_path("test_2.jpg"));
+  background-size: cover;
+  background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
@@ -30,6 +32,28 @@ html {
 
 body {
   height: 100%;
+}
+
+.pull-left {
+  height: 55px;
+  width: 17%;
+}
+
+.pull-left li {
+  display: inline-block;
+  width: 30%;
+  height: 100%;
+}
+
+.pull-left li:first-child{
+  position: absolute;
+  top: -25px;
+  left: 16px;
+}
+
+.pull-left li:last-child{
+  position: absolute;
+  left: 118px;
 }
 
 #collapse-menu h2{
@@ -120,7 +144,7 @@ body {
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 15px;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .reservation-index-item li {

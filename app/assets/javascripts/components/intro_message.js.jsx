@@ -3,7 +3,7 @@
 
   window.IntroMessage = React.createClass({
     getInitialState: function(){
-        var flyPlane = window.setInterval(this.movePlane, 50);
+        var flyPlane = window.setInterval(this.movePlane, 25);
         return(
           {
             waiting: "Finding airports near you...",
@@ -15,11 +15,15 @@
     movePlane: function(){
 
       var newMessage = this.state.waiting + ".";
-      if(newMessage.length > 100){
+      if(newMessage.length > 200){
         newMessage = "Finding airports near you...";
       }
 
       this.setState({waiting: newMessage});
+    },
+
+    componentWillUnmount: function(){
+      window.clearInterval(this.state.flyPlane);
     },
 
     render: function(){

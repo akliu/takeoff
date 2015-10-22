@@ -21,6 +21,7 @@
 
             <div className="collapse navbar-collapse" id="collapse-menu">
               <ul className="nav navbar-nav pull-left">
+                <li><img src="https://res.cloudinary.com/dx1lykanb/image/upload/c_scale,w_100/v1445539959/gulfstream_650/departing_flight.png" /></li>
                 <li><h2>Takeoff</h2></li>
               </ul>
               <ul className="nav navbar-nav pull-right">
@@ -36,3 +37,4 @@
   });
 
 }());
+                // <li><img src="https://res.cloudinary.com/dx1lykanb/image/upload/c_scale,w_100/v1445539959/gulfstream_650/departing_flight.png" /></li>

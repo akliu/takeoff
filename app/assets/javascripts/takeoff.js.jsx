@@ -7,6 +7,7 @@
     var Router = ReactRouter.Router;
     var IndexRoute = ReactRouter.IndexRoute;
     window.Link = ReactRouter.Link;
+    EventEmitter.defaultMaxListeners = 50;
 
     var App = React.createClass({
       render: function(){

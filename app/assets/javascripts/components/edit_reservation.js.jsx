@@ -31,6 +31,10 @@
       ApiUtil.fetchJets();
     },
 
+    componentWillUnmount: function(){
+      JetStore.removeChangeListener(this._updateJets);
+    },
+
     _updateJets: function(){
       // this.setState({availableJets: JetStore.all()});
       this.setState({availableJets: JetStore.atAirportById(this.state.originId)});

@@ -12,6 +12,10 @@
       ApiUtil.fetchJets();
     },
 
+    componentWillUnmount: function(){
+      ReservationStore.removeChangeListener(this._updateReservations);
+    },
+
     _updateReservations: function(){
       this.setState({reservations: ReservationStore.pastReservations()});
     },

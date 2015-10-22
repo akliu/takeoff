@@ -56,6 +56,10 @@
         this.markers = [];
     },
 
+    componentWillUnmount: function(){
+      AirportStore.removeChangeListener(this._updateAirports);
+    },
+
     _filtersChanged: function(){
       ApiUtil.fetchAirports(FilterParamsStore.mapParams());
     },

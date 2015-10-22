@@ -18,6 +18,10 @@
       JetStore.addChangeListener(this._updateOwner);
     },
 
+    componentWillUnmount: function(){
+      JetStore.removeChangeListener(this._updateOwner);
+    },
+
     _updateOwner: function(){
       var jetOwner = JetStore.findById(this.props.reservation.jet_id).owner_name;
       jetOwner = jetOwner.charAt(0).toUpperCase() + jetOwner.slice(1);

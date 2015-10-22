@@ -31,6 +31,11 @@
       ApiUtil.fetchJets();
     },
 
+    componentWillUnmount: function(){
+      JetStore.removeChangeListener(this._updateJets);
+      AirportStore.removeChangeListener(this._updateAirports);
+    },
+
     _updateAirports: function(){
       this.setState({airportNames: AirportStore.allNames()});
     },
