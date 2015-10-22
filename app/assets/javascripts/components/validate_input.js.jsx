@@ -8,18 +8,22 @@
 
     componentWillReceiveProps: function(newProps){
       this.setState({errors: []});
-      var newErrors = [];
-      if(newProps.inputs.origin === newProps.inputs.destination  &&
-            newProps.inputs.origin !== "" &&
-            newProps.inputs.destination !== ""){
-        newErrors.push("Destination cannot be the same as origin");
-      }
-      if(newProps.inputs.date !== ""){
-        if(new Date(newProps.inputs.date) < new Date()){
-          newErrors.push("Departure date must be in the future");
+      if(newProps.inputs.errors.length === 0) {
+        var newErrors = [];
+        if(newProps.inputs.origin === newProps.inputs.destination  &&
+              newProps.inputs.origin !== "" &&
+              newProps.inputs.destination !== ""){
+          newErrors.push("Destination cannot be the same as origin");
         }
+        if(newProps.inputs.date !== ""){
+          if(new Date(newProps.inputs.date) < new Date()){
+            newErrors.push("Departure date must be in the future");
+          }
+        }
+        this.setState({errors: newErrors});
+      }else{
+        this.setState({errors: newProps.inputs.errors});
       }
-      this.setState({errors: newErrors});
     },
 
     render: function(){

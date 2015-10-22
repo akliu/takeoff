@@ -13,13 +13,14 @@
         origin: this.props.location.query.name,
         destination: "",
         date: "",
-        hour: 0,
+        hour: "",
         minute: "",
         ampm: "",
-        jetId: -1,
+        jetId: "",
         availableJets: JetStore.atAirportById(airportId),
         airportNames: AirportStore.allNames(),
-        price: ""
+        price: "",
+        errors: []
       };
     },
 
@@ -42,20 +43,65 @@
 
     handleSubmit: function(event){
       event.preventDefault();
-      var timeOffset = {timezone: -(new Date().getTimezoneOffset() / 60)};
-      var params = $.extend({}, this.state, timeOffset);
-      ApiUtil.createReservation(params);
-      this.props.history.pushState(null, "reservations/index");
+      if(this.validate()){
+        var timeOffset = {timezone: -(new Date().getTimezoneOffset() / 60)};
+        var params = $.extend({}, this.state, timeOffset);
+        ApiUtil.createReservation(params);
+        this.props.history.pushState(null, "reservations/index");
+      }
     },
 
-    // handleOriginChange: function(event){
-    //   event.preventDefault();
-    //   this.setState({origin: event.currentTarget.value,
-    //                   jetId: -1});
-    //   // ApiUtil.fetchJets({origin: event.currentTarget.value});
-    //   ApiUtil.fetchJets();
-    //   this.updatePrice(event.currentTarget.value, this.state.destination);
-    // },
+    validate: function(){
+      var errorsFound = [];
+      var originFound = false;
+      var destinationFound = false;
+      if(this.state.origin === this.state.destination &&
+            this.state.origin !== "" &&
+            this.state.destination !== ""){
+        errorsFound.push("Destination cannot be the same as origin");
+      }
+      if(new Date(this.state.date) < new Date()){
+        errorsFound.push("Departure date must be in the future");
+      }
+      if(this.state.origin === ""){
+        errorsFound.push("Origin missing");
+      }
+      if(this.state.destination === ""){
+        errorsFound.push("Destination missing");
+      }
+      if(this.state.date === ""){
+        errorsFound.push("Date missing");
+      }
+      if(this.state.hour === "" || this.state.minute === "" ||
+          this.state.ampm === ""){
+        errorsFound.push("Departure time missing");
+      }
+      if(this.state.jetId === ""){
+        errorsFound.push("Aircraft missing");
+      }
+
+      for(var i = 0; i < this.state.airportNames.length; i++){
+        if(this.state.airportNames[i] === this.state.origin){
+          originFound = true;
+        }
+        if(this.state.airportNames[i] === this.state.destination){
+          destinationFound = true;
+        }
+      }
+      if(!originFound){
+        errorsFound.push("Unknown origin airport");
+      }
+      if(!destinationFound){
+        errorsFound.push("Unknown destination airport");
+      }
+
+      if(errorsFound.length === 0){
+        return true;
+      }else{
+        this.setState({errors: errorsFound});
+        return false;
+      }
+    },
 
     handleOriginChange: function(value){
       this.setState({origin: value,
