@@ -107,14 +107,10 @@
       this.setState({origin: value,
                       jetId: -1,
                       availableJets: JetStore.atAirport(value)});
-      // ApiUtil.fetchJets({origin: event.currentTarget.value});
-      // ApiUtil.fetchJets();
-      // this.updatePrice(value, this.state.destination);
     },
 
     handleDestinationChange: function(value){
       this.setState({destination: value});
-      // this.updatePrice(this.state.origin, value);
     },
 
     handleDateChange: function(event){
@@ -213,38 +209,3 @@
   });
 
 }(this));
-
-
-            // <input type="date" className="form-control date-input" valueLink={this.linkState("date")} id="date"></input>
-
-
-
-// <select onChange={this.handleOriginChange} value={this.state.origin}
-//         id="origin">
-//   <option></option>
-//   {
-//     AirportStore.all().map(function(airport){
-//       return (
-//         <option value={airport.name} key={airport.id}>
-//           {airport.name} - {airport.code}
-//         </option>
-//       );
-//     }.bind(this))
-//   }
-// </select>
-
-
-
-
-// <select valueLink={this.linkState("destination")} id="destination">
-//   <option></option>
-//   {
-//     AirportStore.all().map(function(airport){
-//       return (
-//         <option value={airport.name} key={airport.id} >
-//           {airport.name} - {airport.code}
-//         </option>
-//       );
-//     })
-//   }
-// </select>

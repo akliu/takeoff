@@ -13,12 +13,11 @@
         origin: reservation.origin_name,
         originId: reservation.origin_id,
         destination: reservation.destination_name,
-        date: "",
-        hour: 0,
-        minute: "",
-        ampm: "",
+        date: moment(reservation.departure_time).format('YYYY-MM-DD'),
+        hour: moment(reservation.departure_time).format('h'),
+        minute: moment(reservation.departure_time).format('m'),
+        ampm: moment(reservation.departure_time).format('a'),
         jetId: reservation.jet_id,
-        // availableJets: JetStore.all(),
         availableJets: JetStore.atAirportById(reservation.origin_id),
         airportNames: AirportStore.allNames(),
         price: reservation.price
@@ -76,6 +75,11 @@
       // this.updatePrice(this.state.origin, value);
     },
 
+    handleDateChange: function(event){
+      event.preventDefault();
+      this.setState({date: event.currentTarget.value});
+    },
+
     updatePrice: function(newPrice){
       this.setState({price: newPrice});
     },
@@ -101,8 +105,11 @@
 
 
             <label>Date: </label>
-            <input type="date" className="form-control date-input" valueLink={this.linkState("date")} id="date"></input>
-            <br/>
+            <input type="date"
+                    className="form-control date-input"
+                    onChange={this.handleDateChange}
+                    value={this.state.date}
+                    id="date"></input>
             <label>Departure Time: </label>
             <br/>
               <select valueLink={this.linkState("hour")} id="hour">
