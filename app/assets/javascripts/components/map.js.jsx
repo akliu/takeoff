@@ -141,7 +141,14 @@
 
     render: function(){
       return (
-        <div className="map" ref="map">Finding airports near you...</div>
+        <div className="map-container">
+          <div className="intro modal-content">
+            <h4>
+            Welcome to takeoff! Select an airport to start a new reservation
+          </h4>
+          </div>
+          <div className="map" ref="map">Finding airports near you...</div>
+        </div>
       );
     }
   });
