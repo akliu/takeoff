@@ -47,13 +47,21 @@ body {
 
 .pull-left li:first-child{
   position: absolute;
-  top: -25px;
+  top: 2px;
   left: 16px;
 }
 
 .pull-left li:last-child{
   position: absolute;
   left: 118px;
+}
+
+.pull-left img:hover{
+  cursor: pointer;
+}
+
+.pull-left h2:hover{
+  cursor: pointer;
 }
 
 #collapse-menu h2{

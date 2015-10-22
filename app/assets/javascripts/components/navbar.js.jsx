@@ -2,6 +2,12 @@
   'use strict';
 
   window.Navbar = React.createClass({
+    mixins: [ReactRouter.History],
+
+    handleClick: function(event){
+      event.preventDefault();
+      this.history.pushState(null, "/");
+    },
 
     render: function(){
       return (
@@ -21,8 +27,8 @@
 
             <div className="collapse navbar-collapse" id="collapse-menu">
               <ul className="nav navbar-nav pull-left">
-                <li><img src="https://res.cloudinary.com/dx1lykanb/image/upload/c_scale,w_100/v1445539959/gulfstream_650/departing_flight.png" /></li>
-                <li><h2>Takeoff</h2></li>
+                <li><img onClick={this.handleClick} src="https://res.cloudinary.com/dx1lykanb/image/upload/c_scale,w_100/v1445554455/gulfstream_650/departing_flight.png" /></li>
+                <li><h2 onClick={this.handleClick} >Takeoff</h2></li>
               </ul>
               <ul className="nav navbar-nav pull-right">
                 <li><a href="#" onClick={ApiUtil.logOut}>Sign Out</a></li>
