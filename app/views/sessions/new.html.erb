@@ -30,16 +30,16 @@
       <input type="submit" value="Sign In">
       <br>
       <br>
-      <p>Not a Member?
-        <%= link_to "Sign up here!", new_user_url %>
-        Or sign in as a guest:
-        <form action="<%= session_url %>" method="post">
-          <%= auth_token_input %>
-          <input type="hidden" name="user[username]" value="andrew">
-          <input type="hidden" name="user[password]" value="andrew">
-          <input type="submit" value="Guest Sign In"/>
-        </form>
-      </p>
     </form>
+      <form class="sign-up-in-form" action="<%= session_url %>" method="post">
+    <p >Not a Member?
+      <%= link_to "Sign up here!", new_user_url %>
+      Or sign in as a guest:
+        <%= auth_token_input %>
+        <input type="hidden" name="user[username]" value="andrew">
+        <input type="hidden" name="user[password]" value="andrew">
+        <input type="submit" value="Guest Sign In"/>
+      </form>
+    </p>
   </div>
 </div>
