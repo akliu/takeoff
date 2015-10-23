@@ -1,4 +1,63 @@
-<h1 class="title">Takeoff</h1>
+<div class="sign-in-container">
+  <div class="sign-in-page-title">
+    <div class="logo">
+      <div class="logo-image">
+        <img src="https://res.cloudinary.com/dx1lykanb/image/upload/c_scale,w_100/v1445554455/gulfstream_650/departing_flight.png" />
+      </div>
+      <div class="logo-text">
+        <h1 class="title">Takeoff</h1>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="log-in-page modal-content">
+  <h3 class="sign-up-in-form">Sign Up</h3>
+
+    <form class="sign-up-in-form" action="<%= users_url %>" method="post">
+      <%= auth_token_input %>
+
+      <label>
+        Username
+        <input type="text" name="user[username]" value="">
+      </label>
+
+      <label>
+        Password
+        <input type="password" name="user[password]" value="">
+      </label>
+
+      <input type="submit" value="Sign In">
+      <br>
+      <br>
+      <p>Already a flyer?
+        <%= link_to "Sign in here!", new_session_url %>
+      </p>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1 class="title">Takeoff</h1>
 <br>
 <h3 class="sign-up-in-form">Sign Up</h3>
 
@@ -20,4 +79,4 @@
   <p>Already a flyer?
     <%= link_to "Sign in here!", new_session_url %>
   </p>
-</form>
+</form> -->
