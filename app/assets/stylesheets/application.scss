@@ -36,6 +36,7 @@ body {
 
 .sign-in-container {
   min-width: 800px;
+  margin-top: 6%;
 }
 
 .log-in-page {
@@ -51,28 +52,40 @@ body {
   margin-right: auto;
 }
 
-.sign-in-page-title ul li{
-  display: inline-block;
-  list-style: none;
-}
+// .sign-in-page-title ul li{
+//   display: inline-block;
+//   list-style: none;
+// }
 
 .sign-in-page-title h1{
   font-size: 45px;
 }
 
-.sign-in-page-title ul li:first-child{
-  position:absolute;
+.logo {
+  margin-left: 21%;
 }
 
-.sign-in-page-title ul {
-  margin-left: 16%;
-  margin-top: 7%;
+.logo-image {
+  float: left;
 }
 
-.sign-in-page-title ul li:last-child{
-  position: absolute;
-  left: 23%;
+.logo-text{
+  float:left;
 }
+
+// .sign-in-page-title ul li:first-child{
+//   position:absolute;
+// }
+//
+// .sign-in-page-title ul {
+//   margin-left: 16%;
+//   margin-top: 7%;
+// }
+//
+// .sign-in-page-title ul li:last-child{
+//   position: absolute;
+//   left: 23%;
+// }
 
 .pull-left {
   height: 55px;
