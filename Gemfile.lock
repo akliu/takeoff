@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.2.3)
       actionpack (= 4.2.3)
@@ -81,6 +82,8 @@ GEM
       thor (~> 0.14)
     flux-rails-assets (1.0.1)
       railties (>= 3.1)
+    font-awesome-rails (4.4.0.0)
+      railties (>= 3.2, < 5.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     http-cookie (1.0.2)
@@ -209,6 +212,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   figaro
   flux-rails-assets (= 1.0.1)
+  font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
   newrelic_rpm

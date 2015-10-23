@@ -3,6 +3,7 @@
 
   var hours = [1,2,3,4,5,6,7,8,9,10,11,12];
   var minutes = [15,30,45];
+  
 
   window.NewReservation = React.createClass({
     mixins: [React.addons.LinkedStateMixin],
@@ -20,7 +21,8 @@
         availableJets: JetStore.atAirportById(airportId),
         airportNames: AirportStore.allNames(),
         price: "",
-        errors: []
+        errors: [],
+        startDate: moment()
       };
     },
 
@@ -140,6 +142,12 @@
       this.setState({price: newPrice});
     },
 
+    calendarChange: function(date) {
+      this.setState({
+        startDate: date
+      });
+    },
+
     render: function(){
       return (
         <div className="reservation-list modal-content">
@@ -154,11 +162,7 @@
                           update={this.handleDestinationChange}
                           type="To:"/>
             <label>Date: </label>
-            <input type="date"
-                    className="form-control date-input"
-                    onChange={this.handleDateChange}
-                    value={this.state.date}
-                    id="date"></input>
+            <DatePicker selected={this.state.startDate} onChange={this.calandarChange} />
             <label>Departure Time: </label>
             <br/>
               <select valueLink={this.linkState("hour")} id="hour">

@@ -19,6 +19,7 @@
 //= require flux
 //= require eventemitter
 //= require moment-with-locales.min.js
-//= require react-calendar-bundle
+//= require tether
+//= require react-datepicker
 //= require components
 //= require_tree .

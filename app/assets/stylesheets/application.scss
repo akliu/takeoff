@@ -18,7 +18,6 @@
 @import "bootstrap";
 
 
-
 body {
   background-image: url(asset_path("test_2.jpg"));
   background-size: cover;
@@ -361,3 +360,5 @@ form .time-input{
 //     object-position: center;
 //     z-index: 0;
 // }
+
+//= require input-calendar

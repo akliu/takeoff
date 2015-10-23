@@ -8,6 +8,7 @@
     var IndexRoute = ReactRouter.IndexRoute;
     window.Link = ReactRouter.Link;
     EventEmitter.defaultMaxListeners = 50;
+    // var DatePicker = require('react-datepicker');
 
     var App = React.createClass({
       render: function(){
