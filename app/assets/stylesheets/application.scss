@@ -39,6 +39,23 @@ body {
   margin-top: 6%;
 }
 
+.log-in-warning-container {
+  width: 600px;
+  margin: auto;
+}
+
+.log-in-warning {
+  width: 600px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: auto;
+  position: absolute;
+}
+
+.log-in-warning ul {
+  margin-top: 6px;
+  margin-bottom: 5px;
+}
+
 .log-in-page {
   width: 600px;
   background: rgba(255, 255, 255, 0.3);
@@ -47,7 +64,7 @@ body {
 }
 
 .sign-up-in-form {
-  width: 93%;
+  width: 94%;
   margin-left: auto;
   margin-right: auto;
 }
