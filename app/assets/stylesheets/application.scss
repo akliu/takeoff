@@ -34,6 +34,46 @@ body {
   height: 100%;
 }
 
+.sign-in-container {
+  min-width: 800px;
+}
+
+.log-in-page {
+  width: 600px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: auto;
+  margin-top: 4%;
+}
+
+.sign-up-in-form {
+  width: 93%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sign-in-page-title ul li{
+  display: inline-block;
+  list-style: none;
+}
+
+.sign-in-page-title h1{
+  font-size: 45px;
+}
+
+.sign-in-page-title ul li:first-child{
+  position:absolute;
+}
+
+.sign-in-page-title ul {
+  margin-left: 16%;
+  margin-top: 7%;
+}
+
+.sign-in-page-title ul li:last-child{
+  position: absolute;
+  left: 23%;
+}
+
 .pull-left {
   height: 55px;
   width: 17%;
@@ -161,10 +201,6 @@ body {
 
 .title {
   margin-left: 4%;
-}
-
-.sign-up-in-form {
-  margin-left: 7%;
 }
 
 img.jet {
