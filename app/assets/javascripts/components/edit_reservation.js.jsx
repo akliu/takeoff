@@ -21,7 +21,8 @@
         availableJets: JetStore.atAirportById(reservation.origin_id),
         airportNames: AirportStore.allNames(),
         price: reservation.price,
-        errors: []
+        errors: [],
+        startDate: moment(reservation.departure_time)
       };
     },
 
@@ -45,7 +46,9 @@
       if(this.validate()){
         var timezoneAndId = {id: this.props.location.query.id,
                               timezone: -(new Date().getTimezoneOffset() / 60)};
-        var params = $.extend({}, this.state, timezoneAndId);
+        var state = $.extend({}, this.state);
+        delete state.startDate;
+        var params = $.extend({}, state, timezoneAndId);
         ApiUtil.editReservation(params);
         this.props.history.pushState(null, "reservations/index");
       }
@@ -82,9 +85,10 @@
       // this.updatePrice(this.state.origin, value);
     },
 
-    handleDateChange: function(event){
-      event.preventDefault();
-      this.setState({date: event.currentTarget.value});
+    handleDateChange: function(newDate){
+      // event.preventDefault();
+      var date = newDate.format('l');
+      this.setState({date: date, startDate: newDate});
     },
 
     updatePrice: function(newPrice){
@@ -178,11 +182,9 @@
 
 
             <label>Date: </label>
-            <input type="date"
-                    className="form-control date-input"
-                    onChange={this.handleDateChange}
-                    value={this.state.date}
-                    id="date"></input>
+            <DatePicker selected={this.state.startDate}
+                        onChange={this.handleDateChange}
+                        dateFormat="MM/DD/YYYY"/>
             <label>Departure Time: </label>
             <br/>
               <select valueLink={this.linkState("hour")} id="hour">

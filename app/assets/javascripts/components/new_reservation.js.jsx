@@ -3,7 +3,7 @@
 
   var hours = [1,2,3,4,5,6,7,8,9,10,11,12];
   var minutes = [15,30,45];
-  
+
 
   window.NewReservation = React.createClass({
     mixins: [React.addons.LinkedStateMixin],
@@ -52,7 +52,9 @@
       event.preventDefault();
       if(this.validate()){
         var timeOffset = {timezone: -(new Date().getTimezoneOffset() / 60)};
-        var params = $.extend({}, this.state, timeOffset);
+        var state = $.extend({}, this.state);
+        delete state.startDate;
+        var params = $.extend({}, state, timeOffset);
         ApiUtil.createReservation(params);
         this.props.history.pushState(null, "reservations/index");
       }
@@ -133,20 +135,21 @@
       this.setState({destination: value});
     },
 
-    handleDateChange: function(event){
-      event.preventDefault();
-      this.setState({date: event.currentTarget.value});
+    handleDateChange: function(newDate){
+      // event.preventDefault();
+      var date = newDate.format('l');
+      this.setState({date: date, startDate: newDate});
     },
 
     updatePrice: function(newPrice){
       this.setState({price: newPrice});
     },
 
-    calendarChange: function(date) {
-      this.setState({
-        startDate: date
-      });
-    },
+    // calendarChange: function(date) {
+    //   this.setState({
+    //     startDate: date
+    //   });
+    // },
 
     render: function(){
       return (
@@ -162,7 +165,9 @@
                           update={this.handleDestinationChange}
                           type="To:"/>
             <label>Date: </label>
-            <DatePicker selected={this.state.startDate} onChange={this.calandarChange} />
+            <DatePicker selected={this.state.startDate}
+                        onChange={this.handleDateChange}
+                        dateFormat="MM/DD/YYYY"/>
             <label>Departure Time: </label>
             <br/>
               <select valueLink={this.linkState("hour")} id="hour">
