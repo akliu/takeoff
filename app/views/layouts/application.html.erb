@@ -8,6 +8,12 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=#{ENV[google_api_key]}"
     type="text/javascript"></script>
 
+  <% if current_user %>
+    <script type="text/javascript">
+      window.CURRENT_USERNAME = "<%= current_user.username %>";
+    </script>
+  <% end %>
+
   <script type="text/javascript" charset="utf-8">
     window.CLOUDINARY_OPTIONS = {
       cloud_name: "<%=ENV['CLOUD_NAME']%>",

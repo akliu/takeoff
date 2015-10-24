@@ -31,6 +31,7 @@
                 <li><h2 onClick={this.handleClick} >Takeoff</h2></li>
               </ul>
               <ul className="nav navbar-nav pull-right">
+                <li><h4>Welcome {window.CURRENT_USERNAME}!</h4></li>
                 <li><a href="#" onClick={ApiUtil.logOut}>Sign Out</a></li>
               </ul>
             </div>

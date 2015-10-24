@@ -133,14 +133,36 @@ body {
   cursor: pointer;
 }
 
+.pull-left li {
+  display: inline-block;
+  width: 30%;
+  height: 100%;
+}
+
+.pull-right li:first-child{
+  padding-top: 11px;
+}
+
+.pull-right h4{
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.pull-right li:last-child{
+  padding-top: 5px;
+}
+
 #collapse-menu h2{
   position: absolute;
   top: -3px;
 }
 
-#collapse-menu li:last-child{
-  padding-top: 5px;
-}
+// #collapse-menu li:last-child{
+//   padding-top: 5px;
+// }
+// #collapse-menu li{
+//   padding-top: 5px;
+// }
 
 #content{
   height: 100%;
