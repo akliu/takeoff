@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
   <script src="https://maps.googleapis.com/maps/api/js?key=#{ENV[google_api_key]}"
     type="text/javascript"></script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <% if current_user %>
     <script type="text/javascript">
       window.CURRENT_USERNAME = "<%= current_user.username %>";
