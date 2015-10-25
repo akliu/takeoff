@@ -26,7 +26,7 @@
 
     render: function(){
       return (
-        <div className="reservation-list modal-content">
+        <div className="animated fadeInUp reservation-list modal-content">
           <h2>Register my Jet</h2>
           <form onSubmit={this.handleSubmit}>
             <label>Jet Model: </label>

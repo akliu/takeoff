@@ -153,7 +153,7 @@
 
     render: function(){
       return (
-        <div className="reservation-list modal-content">
+        <div className="animated fadeInUp reservation-list modal-content">
           <ValidateInput inputs={this.state} />
           <h2>New Reservation</h2>
           <form onSubmit={this.handleSubmit}>

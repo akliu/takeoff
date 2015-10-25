@@ -22,7 +22,7 @@
 
     render: function(){
       return (
-          <div className="reservation-list modal-content">
+          <div className="animated fadeIn reservation-list modal-content">
             <h2>Reservations</h2>
               {
                 this.state.reservations.map(function(reservation){

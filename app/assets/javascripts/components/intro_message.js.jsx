@@ -46,7 +46,7 @@
       }
 
       return (
-        <div className="intro modal-content">
+        <div className="animated fadeIn intro modal-content">
           {message}
         </div>
       );

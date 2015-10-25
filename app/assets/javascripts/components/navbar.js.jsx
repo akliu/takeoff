@@ -11,7 +11,7 @@
 
     render: function(){
       return (
-        <nav className="navbar navbar-default navbar-top">
+        <nav className="animated fadeInDownBig navbar navbar-default navbar-top">
           <div className="container-fluid">
 
             <div className="navbar-header">
