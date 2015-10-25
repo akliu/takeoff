@@ -229,6 +229,7 @@
                   updateForm={this.updatePrice}
                   price={this.state.price} />
           <JetImages jet={JetStore.findById(parseInt(this.state.jetId)).model} />
+          <br/>
         </div>
       );
     }

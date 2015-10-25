@@ -6,7 +6,7 @@ class Api::ReservationsController < ApplicationController
                           current_user.id, DateTime.now).order(:departure_time).includes(:origin, :destination, :user, :jet)
     else
       @reservations = Reservation.where("user_id = ? AND departure_time < ?",
-                1, DateTime.now).order("departure_time DESC").includes(:origin, :destination, :user, :jet)
+                current_user.id, DateTime.now).order("departure_time DESC").includes(:origin, :destination, :user, :jet)
     end
 
     @reservations = prepare_for_json(@reservations)
