@@ -33,6 +33,8 @@
               <ul className="nav navbar-nav pull-right">
                 <li><h4>Welcome {window.CURRENT_USERNAME}!</h4></li>
                 <li><a href="#" onClick={ApiUtil.logOut}>Sign Out</a></li>
+                <li><a href="https://www.linkedin.com/in/andrewliu89"><i className="fa fa-linkedin"></i></a></li>
+                <li><a href="https://github.com/akliu"><i className="fa fa-github"></i></a></li>
               </ul>
             </div>
 
