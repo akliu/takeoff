@@ -46,7 +46,7 @@
         ApiUtil.fetchAllAirports();
         var marker = new google.maps.Marker({
           // icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-          icon: "http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png",
+          icon: "https://res.cloudinary.com/dx1lykanb/image/upload/v1445759978/red_dot_nte2tm.png",
           position: userLocation,
           map: this.map,
           animation: google.maps.Animation.DROP
@@ -95,8 +95,7 @@
       var that = this;
       var pos = new google.maps.LatLng(airport.lat, airport.lng);
       var marker = new google.maps.Marker({
-        // icon: "http://maps.google.com/mapfiles/kml/shapes/airports.png",
-        icon: "http://maps.google.com/mapfiles/kml/pal2/icon56.png",
+        icon: "https://res.cloudinary.com/dx1lykanb/image/upload/v1445760110/airplane_icon_scgcc1.png",
         position: pos,
         map: this.map,
         airportId: airport.id,
