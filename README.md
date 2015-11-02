@@ -1,6 +1,6 @@
 # Takeoff
 
-[Heroku link][heroku] **NB:** This should be a link to your production site
+[Live Link][heroku]
 
 [heroku]: http://www.flytakeoff.xyz/
 
